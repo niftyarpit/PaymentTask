@@ -331,6 +331,36 @@
             </objects>
             <point key="canvasLocation" x="1753" y="-50"/>
         </scene>
+        <!--Pay Wallet View Controller-->
+        <scene sceneID="vGm-Hj-lQ4">
+            <objects>
+                <viewController storyboardIdentifier="PayWalletViewController" id="DQ7-QI-l0q" customClass="PayWalletViewController" customModule="Payment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gTg-A8-LiP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="pp0-l0-yTe"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Qi-gg-8Vw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2696" y="493"/>
+        </scene>
+        <!--Link Wallet View Controller-->
+        <scene sceneID="Nde-jr-3lZ">
+            <objects>
+                <viewController storyboardIdentifier="LinkWalletViewController" id="kZF-Zc-pL6" customClass="LinkWalletViewController" customModule="Payment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GBI-lq-257">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="25V-Oz-5Xu"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pgy-dJ-kna" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2682" y="-231"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="aBh-od-gRf">
             <objects>
