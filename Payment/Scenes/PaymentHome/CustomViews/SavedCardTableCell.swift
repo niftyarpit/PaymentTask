@@ -14,6 +14,7 @@ class SavedCardTableCell: UITableViewCell {
     @IBOutlet weak var savedCardNumberLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
     @IBOutlet weak var cvvTextField: UITextField!
+    @IBOutlet weak var containerView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

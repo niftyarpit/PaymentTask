@@ -217,7 +217,6 @@
 				CE611C0B21C0DFDB00E46A55 /* Card */,
 				CE611BFE21BEBA4D00E46A55 /* UPI */,
 				CE611BEF21B965E300E46A55 /* Helpers */,
-				CE611BEA21B95CD600E46A55 /* CustomViews */,
 				CE611BE521B784C000E46A55 /* Payment.storyboard */,
 			);
 			path = Scenes;
@@ -226,6 +225,7 @@
 		CE3FDCBB21C1203C00D34C36 /* PaymentHome */ = {
 			isa = PBXGroup;
 			children = (
+				CE611BEA21B95CD600E46A55 /* CustomViews */,
 				CE611BE321B783A600E46A55 /* PaymentHomeData.json */,
 				CE108AAE21B5A6020007E313 /* PaymentHomeRouter.swift */,
 				CE108AB021B5A6020007E313 /* PaymentHomeViewController.swift */,
@@ -263,12 +263,12 @@
 		CE611BFE21BEBA4D00E46A55 /* UPI */ = {
 			isa = PBXGroup;
 			children = (
-				CE611BFF21BEBA8C00E46A55 /* UPIPresenter.swift */,
-				CE611C0021BEBA8C00E46A55 /* UPIWorker.swift */,
 				CE611C0121BEBA8C00E46A55 /* UPIRouter.swift */,
-				CE611C0221BEBA8C00E46A55 /* UPIModels.swift */,
 				CE611C0321BEBA8C00E46A55 /* UPIViewController.swift */,
+				CE611BFF21BEBA8C00E46A55 /* UPIPresenter.swift */,
 				CE611C0421BEBA8C00E46A55 /* UPIInteractor.swift */,
+				CE611C0021BEBA8C00E46A55 /* UPIWorker.swift */,
+				CE611C0221BEBA8C00E46A55 /* UPIModels.swift */,
 			);
 			path = UPI;
 			sourceTree = "<group>";
@@ -276,12 +276,12 @@
 		CE611C0B21C0DFDB00E46A55 /* Card */ = {
 			isa = PBXGroup;
 			children = (
-				CE611C0C21C0E00F00E46A55 /* CardPresenter.swift */,
-				CE611C0D21C0E00F00E46A55 /* CardWorker.swift */,
 				CE611C0E21C0E00F00E46A55 /* CardRouter.swift */,
-				CE611C0F21C0E00F00E46A55 /* CardModels.swift */,
 				CE611C1021C0E00F00E46A55 /* CardViewController.swift */,
+				CE611C0C21C0E00F00E46A55 /* CardPresenter.swift */,
 				CE611C1121C0E00F00E46A55 /* CardInteractor.swift */,
+				CE611C0D21C0E00F00E46A55 /* CardWorker.swift */,
+				CE611C0F21C0E00F00E46A55 /* CardModels.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -289,12 +289,12 @@
 		CE611C1821C0E70100E46A55 /* LinkWallet */ = {
 			isa = PBXGroup;
 			children = (
-				CE611C1921C0E71F00E46A55 /* LinkWalletPresenter.swift */,
-				CE611C1A21C0E71F00E46A55 /* LinkWalletWorker.swift */,
 				CE611C1B21C0E71F00E46A55 /* LinkWalletRouter.swift */,
-				CE611C1C21C0E71F00E46A55 /* LinkWalletModels.swift */,
 				CE611C1D21C0E71F00E46A55 /* LinkWalletViewController.swift */,
+				CE611C1921C0E71F00E46A55 /* LinkWalletPresenter.swift */,
 				CE611C1E21C0E71F00E46A55 /* LinkWalletInteractor.swift */,
+				CE611C1A21C0E71F00E46A55 /* LinkWalletWorker.swift */,
+				CE611C1C21C0E71F00E46A55 /* LinkWalletModels.swift */,
 			);
 			path = LinkWallet;
 			sourceTree = "<group>";
@@ -302,12 +302,12 @@
 		CE611C2521C0E72E00E46A55 /* PayWallet */ = {
 			isa = PBXGroup;
 			children = (
-				CE611C2621C0E74800E46A55 /* PayWalletPresenter.swift */,
-				CE611C2721C0E74800E46A55 /* PayWalletWorker.swift */,
 				CE611C2821C0E74800E46A55 /* PayWalletRouter.swift */,
-				CE611C2921C0E74800E46A55 /* PayWalletModels.swift */,
 				CE611C2A21C0E74800E46A55 /* PayWalletViewController.swift */,
+				CE611C2621C0E74800E46A55 /* PayWalletPresenter.swift */,
 				CE611C2B21C0E74800E46A55 /* PayWalletInteractor.swift */,
+				CE611C2721C0E74800E46A55 /* PayWalletWorker.swift */,
+				CE611C2921C0E74800E46A55 /* PayWalletModels.swift */,
 			);
 			path = PayWallet;
 			sourceTree = "<group>";

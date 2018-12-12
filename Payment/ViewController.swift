@@ -27,12 +27,8 @@ class ViewController: UIViewController {
     
     private func configureNavigator() {
         guard let navigationController = navigationController else { return }
-        if #available(iOS 11.0, *) {
-            navigationController.navigationBar.prefersLargeTitles = true
-            navigationItem.largeTitleDisplayMode = .automatic
-        } else {
-            // Fallback on earlier versions
-        }
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
         navigationController.navigationBar.sizeToFit()
     }
 
