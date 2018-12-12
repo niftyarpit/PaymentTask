@@ -211,12 +211,21 @@
 		CE108AAB21B5A5C20007E313 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				CE3FDCBB21C1203C00D34C36 /* PaymentHome */,
 				CE611C2521C0E72E00E46A55 /* PayWallet */,
 				CE611C1821C0E70100E46A55 /* LinkWallet */,
 				CE611C0B21C0DFDB00E46A55 /* Card */,
 				CE611BFE21BEBA4D00E46A55 /* UPI */,
 				CE611BEF21B965E300E46A55 /* Helpers */,
 				CE611BEA21B95CD600E46A55 /* CustomViews */,
+				CE611BE521B784C000E46A55 /* Payment.storyboard */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		CE3FDCBB21C1203C00D34C36 /* PaymentHome */ = {
+			isa = PBXGroup;
+			children = (
 				CE611BE321B783A600E46A55 /* PaymentHomeData.json */,
 				CE108AAE21B5A6020007E313 /* PaymentHomeRouter.swift */,
 				CE108AB021B5A6020007E313 /* PaymentHomeViewController.swift */,
@@ -224,9 +233,8 @@
 				CE108AB121B5A6020007E313 /* PaymentHomeInteractor.swift */,
 				CE108AAD21B5A6020007E313 /* PaymentHomeWorker.swift */,
 				CE108AAF21B5A6020007E313 /* PaymentHomeModels.swift */,
-				CE611BE521B784C000E46A55 /* Payment.storyboard */,
 			);
-			path = Scenes;
+			path = PaymentHome;
 			sourceTree = "<group>";
 		};
 		CE611BEA21B95CD600E46A55 /* CustomViews */ = {
