@@ -13,16 +13,14 @@
 import UIKit
 
 protocol NetBanksPresentationLogic {
-    func presentSomething(response: NetBanks.Something.Response)
+    func presentList(response: NetBanks.List.Response)
 }
 
 class NetBanksPresenter: NetBanksPresentationLogic {
     weak var viewController: NetBanksDisplayLogic?
     
-    // MARK: Do something
-    
-    func presentSomething(response: NetBanks.Something.Response) {
-        let viewModel = NetBanks.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+    func presentList(response: NetBanks.List.Response) {
+        let viewModel = NetBanks.List.ViewModel()
+        viewController?.displayList(viewModel: viewModel)
     }
 }

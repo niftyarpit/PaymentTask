@@ -24,37 +24,37 @@
                 {
                     "priority":1,
                     "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-11.png",
-                    "code":"",
+                    "code":"sbi",
                     "name":"SBI"
                 },
                 {
                     "priority":2,
                     "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-10.png",
-                    "code":"",
+                    "code":"hdfc",
                     "name":"HDFC Bank"
                 },
                 {
                     "priority":3,
                     "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-15.png",
-                    "code":"",
+                    "code":"icici",
                     "name":"ICICI Bank"
                 },
                 {
                     "priority":4,
                     "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-12.png",
-                    "code":"",
+                    "code":"axis",
                     "name":"Axis Bank"
                 },
                 {
                     "priority":5,
                     "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-13.png",
-                    "code":"",
+                    "code":"kotak",
                     "name":"Kotak"
                 },
                 {
                     "priority":6,
                     "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-14.png",
-                    "code":"",
+                    "code":"yes",
                     "name":"Yes Bank"
                 }
             ],

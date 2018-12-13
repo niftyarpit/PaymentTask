@@ -14,6 +14,10 @@ class NetBanksTableCell: UITableViewCell {
     
     var banks: [PaymentHome.PaymentOptions.ViewModel.PreferredBanksViewModel.PreferredBankViewModel] = []
     
+    var bankClickHandler: (String) -> Void = {
+        _ in
+    }
+    
     func configureCellWithModel(_ model: [PaymentHome.PaymentOptions.ViewModel.PreferredBanksViewModel.PreferredBankViewModel]) {
         banks = model
         collectionView.reloadData()
@@ -34,6 +38,8 @@ extension NetBanksTableCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let code = banks[indexPath.row].code
+        bankClickHandler(code)
     }
 }
 

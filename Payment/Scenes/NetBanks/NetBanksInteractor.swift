@@ -13,25 +13,20 @@
 import UIKit
 
 protocol NetBanksBusinessLogic {
-    func doSomething(request: NetBanks.Something.Request)
+    func fetchList(request: NetBanks.List.Request)
 }
 
 protocol NetBanksDataStore {
-    //var name: String { get set }
+    var banks: [String: Any] {get set}
 }
 
 class NetBanksInteractor: NetBanksBusinessLogic, NetBanksDataStore {
+    var banks: [String: Any] = [:]
+    
     var presenter: NetBanksPresentationLogic?
-    var worker: NetBanksWorker?
-    //var name: String = ""
     
-    // MARK: Do something
-    
-    func doSomething(request: NetBanks.Something.Request) {
-        worker = NetBanksWorker()
-        worker?.doSomeWork()
-        
-        let response = NetBanks.Something.Response()
-        presenter?.presentSomething(response: response)
+    func fetchList(request: NetBanks.List.Request) {
+        let response = NetBanks.List.Response()
+        presenter?.presentList(response: response)
     }
 }

@@ -183,6 +183,9 @@ extension PaymentHomeViewController: UITableViewDataSource {
                                                           for: indexPath) as! NetBanksTableCell
                 let preferredBanksModel = info as! PaymentHome.PaymentOptions.ViewModel.PreferredBanksViewModel
                 lCell.configureCellWithModel(preferredBanksModel.banks)
+                lCell.bankClickHandler = {[weak self] code in
+                    print(code)
+                }
                 cell = lCell
             case PaymentHomeConstants.Values.IdentifierNames.FooterTableCell:
                 let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,

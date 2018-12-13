@@ -261,12 +261,12 @@
 		CE3FDCBF21C2721E00D34C36 /* NetBanks */ = {
 			isa = PBXGroup;
 			children = (
-				CE3FDCC021C2727A00D34C36 /* NetBanksPresenter.swift */,
-				CE3FDCC121C2727A00D34C36 /* NetBanksWorker.swift */,
 				CE3FDCC221C2727A00D34C36 /* NetBanksRouter.swift */,
-				CE3FDCC321C2727A00D34C36 /* NetBanksModels.swift */,
 				CE3FDCC421C2727A00D34C36 /* NetBanksViewController.swift */,
+				CE3FDCC021C2727A00D34C36 /* NetBanksPresenter.swift */,
 				CE3FDCC521C2727A00D34C36 /* NetBanksInteractor.swift */,
+				CE3FDCC121C2727A00D34C36 /* NetBanksWorker.swift */,
+				CE3FDCC321C2727A00D34C36 /* NetBanksModels.swift */,
 			);
 			path = NetBanks;
 			sourceTree = "<group>";

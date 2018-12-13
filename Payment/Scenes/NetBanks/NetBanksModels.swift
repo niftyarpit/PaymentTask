@@ -15,7 +15,7 @@ import UIKit
 enum NetBanks {
     // MARK: Use cases
     
-    enum Something {
+    enum List {
         struct Request {
         }
         struct Response {

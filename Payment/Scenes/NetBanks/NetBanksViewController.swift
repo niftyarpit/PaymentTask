@@ -13,7 +13,7 @@
 import UIKit
 
 protocol NetBanksDisplayLogic: class {
-    func displaySomething(viewModel: NetBanks.Something.ViewModel)
+    func displayList(viewModel: NetBanks.List.ViewModel)
 }
 
 class NetBanksViewController: UIViewController, NetBanksDisplayLogic {
@@ -62,20 +62,15 @@ class NetBanksViewController: UIViewController, NetBanksDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+        fetchList()
         navigationItem.title = "Net Banking"
     }
     
-    // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething() {
-        let request = NetBanks.Something.Request()
-        interactor?.doSomething(request: request)
+    func fetchList() {
+        let request = NetBanks.List.Request()
+        interactor?.fetchList(request: request)
     }
     
-    func displaySomething(viewModel: NetBanks.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+    func displayList(viewModel: NetBanks.List.ViewModel) {
     }
 }

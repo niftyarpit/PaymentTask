@@ -21,6 +21,7 @@ class SavedCardTableCell: UITableViewCell {
         payButton.dropShadow()
         payButton.layer.cornerRadius = 5
         cvvTextField.dropShadow()
+        containerView.isHidden = false
     }
     
     func configureCellWithModel(_ model: PaymentHome.PaymentOptions.ViewModel.CardsViewModel.CardViewModel) {
