@@ -20,6 +20,12 @@
 		CE108AB521B5A6020007E313 /* PaymentHomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE108AAF21B5A6020007E313 /* PaymentHomeModels.swift */; };
 		CE108AB621B5A6020007E313 /* PaymentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE108AB021B5A6020007E313 /* PaymentHomeViewController.swift */; };
 		CE108AB721B5A6020007E313 /* PaymentHomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE108AB121B5A6020007E313 /* PaymentHomeInteractor.swift */; };
+		CE3FDCC621C2727A00D34C36 /* NetBanksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FDCC021C2727A00D34C36 /* NetBanksPresenter.swift */; };
+		CE3FDCC721C2727A00D34C36 /* NetBanksWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FDCC121C2727A00D34C36 /* NetBanksWorker.swift */; };
+		CE3FDCC821C2727A00D34C36 /* NetBanksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FDCC221C2727A00D34C36 /* NetBanksRouter.swift */; };
+		CE3FDCC921C2727A00D34C36 /* NetBanksModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FDCC321C2727A00D34C36 /* NetBanksModels.swift */; };
+		CE3FDCCA21C2727A00D34C36 /* NetBanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FDCC421C2727A00D34C36 /* NetBanksViewController.swift */; };
+		CE3FDCCB21C2727A00D34C36 /* NetBanksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FDCC521C2727A00D34C36 /* NetBanksInteractor.swift */; };
 		CE611BE421B783A600E46A55 /* PaymentHomeData.json in Resources */ = {isa = PBXBuildFile; fileRef = CE611BE321B783A600E46A55 /* PaymentHomeData.json */; };
 		CE611BE621B784C000E46A55 /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE611BE521B784C000E46A55 /* Payment.storyboard */; };
 		CE611BEC21B95D0100E46A55 /* WalletTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE611BEB21B95D0100E46A55 /* WalletTableCell.swift */; };
@@ -94,6 +100,12 @@
 		CE108AAF21B5A6020007E313 /* PaymentHomeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHomeModels.swift; sourceTree = "<group>"; };
 		CE108AB021B5A6020007E313 /* PaymentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHomeViewController.swift; sourceTree = "<group>"; };
 		CE108AB121B5A6020007E313 /* PaymentHomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHomeInteractor.swift; sourceTree = "<group>"; };
+		CE3FDCC021C2727A00D34C36 /* NetBanksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBanksPresenter.swift; sourceTree = "<group>"; };
+		CE3FDCC121C2727A00D34C36 /* NetBanksWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBanksWorker.swift; sourceTree = "<group>"; };
+		CE3FDCC221C2727A00D34C36 /* NetBanksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBanksRouter.swift; sourceTree = "<group>"; };
+		CE3FDCC321C2727A00D34C36 /* NetBanksModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBanksModels.swift; sourceTree = "<group>"; };
+		CE3FDCC421C2727A00D34C36 /* NetBanksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBanksViewController.swift; sourceTree = "<group>"; };
+		CE3FDCC521C2727A00D34C36 /* NetBanksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBanksInteractor.swift; sourceTree = "<group>"; };
 		CE611BE321B783A600E46A55 /* PaymentHomeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PaymentHomeData.json; sourceTree = "<group>"; };
 		CE611BE521B784C000E46A55 /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		CE611BEB21B95D0100E46A55 /* WalletTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableCell.swift; sourceTree = "<group>"; };
@@ -211,6 +223,7 @@
 		CE108AAB21B5A5C20007E313 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				CE3FDCBF21C2721E00D34C36 /* NetBanks */,
 				CE3FDCBB21C1203C00D34C36 /* PaymentHome */,
 				CE611C2521C0E72E00E46A55 /* PayWallet */,
 				CE611C1821C0E70100E46A55 /* LinkWallet */,
@@ -235,6 +248,19 @@
 				CE108AAF21B5A6020007E313 /* PaymentHomeModels.swift */,
 			);
 			path = PaymentHome;
+			sourceTree = "<group>";
+		};
+		CE3FDCBF21C2721E00D34C36 /* NetBanks */ = {
+			isa = PBXGroup;
+			children = (
+				CE3FDCC021C2727A00D34C36 /* NetBanksPresenter.swift */,
+				CE3FDCC121C2727A00D34C36 /* NetBanksWorker.swift */,
+				CE3FDCC221C2727A00D34C36 /* NetBanksRouter.swift */,
+				CE3FDCC321C2727A00D34C36 /* NetBanksModels.swift */,
+				CE3FDCC421C2727A00D34C36 /* NetBanksViewController.swift */,
+				CE3FDCC521C2727A00D34C36 /* NetBanksInteractor.swift */,
+			);
+			path = NetBanks;
 			sourceTree = "<group>";
 		};
 		CE611BEA21B95CD600E46A55 /* CustomViews */ = {
@@ -446,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE108AB721B5A6020007E313 /* PaymentHomeInteractor.swift in Sources */,
+				CE3FDCCB21C2727A00D34C36 /* NetBanksInteractor.swift in Sources */,
 				CE611BF721BA77D100E46A55 /* ConstantsHelper.swift in Sources */,
 				CE611C3021C0E74800E46A55 /* PayWalletViewController.swift in Sources */,
 				CE108A8021B5A5190007E313 /* ViewController.swift in Sources */,
@@ -455,6 +482,7 @@
 				CE611C1721C0E00F00E46A55 /* CardInteractor.swift in Sources */,
 				CE611BF521B9BAB300E46A55 /* NetBankCollectionCell.swift in Sources */,
 				CE611C2421C0E71F00E46A55 /* LinkWalletInteractor.swift in Sources */,
+				CE3FDCC921C2727A00D34C36 /* NetBanksModels.swift in Sources */,
 				CE611BEC21B95D0100E46A55 /* WalletTableCell.swift in Sources */,
 				CE611C0621BEBA8C00E46A55 /* UPIWorker.swift in Sources */,
 				CE611C2121C0E71F00E46A55 /* LinkWalletRouter.swift in Sources */,
@@ -463,6 +491,7 @@
 				CE108AB221B5A6020007E313 /* PaymentHomePresenter.swift in Sources */,
 				CE611BEE21B9613A00E46A55 /* SavedCardTableCell.swift in Sources */,
 				CE611C1521C0E00F00E46A55 /* CardModels.swift in Sources */,
+				CE3FDCC621C2727A00D34C36 /* NetBanksPresenter.swift in Sources */,
 				CE611BFB21BDA27100E46A55 /* FooterTableCell.swift in Sources */,
 				CE611BF921BDA25700E46A55 /* HeaderTableCell.swift in Sources */,
 				CE611C2221C0E71F00E46A55 /* LinkWalletModels.swift in Sources */,
@@ -470,10 +499,13 @@
 				CE611C0921BEBA8C00E46A55 /* UPIViewController.swift in Sources */,
 				CE611C2021C0E71F00E46A55 /* LinkWalletWorker.swift in Sources */,
 				CE611C2C21C0E74800E46A55 /* PayWalletPresenter.swift in Sources */,
+				CE3FDCC821C2727A00D34C36 /* NetBanksRouter.swift in Sources */,
 				CE611BF321B9B85300E46A55 /* NetBanksTableCell.swift in Sources */,
 				CE108AB621B5A6020007E313 /* PaymentHomeViewController.swift in Sources */,
+				CE3FDCCA21C2727A00D34C36 /* NetBanksViewController.swift in Sources */,
 				CE611C0721BEBA8C00E46A55 /* UPIRouter.swift in Sources */,
 				CE611C1221C0E00F00E46A55 /* CardPresenter.swift in Sources */,
+				CE3FDCC721C2727A00D34C36 /* NetBanksWorker.swift in Sources */,
 				CE611C1F21C0E71F00E46A55 /* LinkWalletPresenter.swift in Sources */,
 				CE611C0821BEBA8C00E46A55 /* UPIModels.swift in Sources */,
 				CE611BF121B967C400E46A55 /* ViewHelper.swift in Sources */,

@@ -332,6 +332,33 @@
             </objects>
             <point key="canvasLocation" x="1753" y="-50"/>
         </scene>
+        <!--Net Banks View Controller-->
+        <scene sceneID="q0b-gf-bW8">
+            <objects>
+                <viewController storyboardIdentifier="NetBanksViewController" id="m9e-na-Suz" customClass="NetBanksViewController" customModule="Payment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PH1-8T-0tN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d2S-Je-582">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="d2S-Je-582" firstAttribute="leading" secondItem="MyH-o5-2jb" secondAttribute="leading" id="LTg-F3-Za9"/>
+                            <constraint firstItem="d2S-Je-582" firstAttribute="top" secondItem="MyH-o5-2jb" secondAttribute="top" id="hJx-q3-7Zm"/>
+                            <constraint firstItem="MyH-o5-2jb" firstAttribute="trailing" secondItem="d2S-Je-582" secondAttribute="trailing" id="pQz-WP-G7g"/>
+                            <constraint firstItem="MyH-o5-2jb" firstAttribute="bottom" secondItem="d2S-Je-582" secondAttribute="bottom" id="qLc-5z-iXU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MyH-o5-2jb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4kV-6T-6Am" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1748" y="674"/>
+        </scene>
         <!--Pay Wallet View Controller-->
         <scene sceneID="vGm-Hj-lQ4">
             <objects>

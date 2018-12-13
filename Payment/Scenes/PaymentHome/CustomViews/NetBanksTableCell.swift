@@ -27,7 +27,8 @@ extension NetBanksTableCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NetBankCollectionCell", for: indexPath) as! NetBankCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PaymentHomeConstants.Values.IdentifierNames.NetBankCollectionCell,
+                                                      for: indexPath) as! NetBankCollectionCell
         cell.configureCellWithModel(banks[indexPath.row])
         return cell
     }

@@ -16,6 +16,17 @@ protocol Identifiable {
     var identifier: String { get }
 }
 
+protocol SectionIdentifiable {
+    var sectionIdentifier: SectionType { get }
+}
+
+enum SectionType: String {
+    case card
+    case wallet
+    case netbank
+    case upi
+}
+
 enum PaymentHome {
     // MARK: Use cases
     
@@ -82,7 +93,8 @@ enum PaymentHome {
                 var banks: [PreferredBankViewModel]
             }
             struct WalletsViewModel: Identifiable {
-                struct WalletViewModel {
+                struct WalletViewModel: Identifiable {
+                    var identifier: String
                     var imageUrl: String
                     var code: String
                     var name: String
@@ -103,17 +115,30 @@ enum PaymentHome {
                 var identifier: String
             }
             struct CardsViewModel: Identifiable {
-                struct CardViewModel {
+                struct CardViewModel: Identifiable {
+                    var identifier: String
                     var imageUrl: String
                     var number: String
                 }
                 var identifier: String
                 var cards: [CardViewModel]
             }
-//            struct CardSectionViewModel: Identifiable {
-//                var identifier: CellType
-//                var info: [Identifiable]
-//            }
+            struct CardSectionViewModel: Identifiable {
+                var identifier: String
+                var info: [Identifiable]
+            }
+            struct WalletSectionViewModel: Identifiable {
+                var identifier: String
+                var info: [Identifiable]
+            }
+            struct NetbankSectionViewModel: Identifiable {
+                var identifier: String
+                var info: [Identifiable]
+            }
+            struct UPISectionViewModel: Identifiable {
+                var identifier: String
+                var info: [Identifiable]
+            }
             var summary: [Identifiable]
         }
     }

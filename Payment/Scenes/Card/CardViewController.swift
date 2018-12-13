@@ -63,6 +63,7 @@ class CardViewController: UIViewController, CardDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         doSomething()
+        navigationItem.title = "Card Payment"
     }
     
     // MARK: Do something
