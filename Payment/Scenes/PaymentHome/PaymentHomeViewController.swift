@@ -90,12 +90,15 @@ extension PaymentHomeViewController: UITableViewDataSource {
         var rows = 1
         let identifier = summary[section].identifier
         switch identifier {
-        case PaymentHomeConstants.Values.IdentifierNames.WalletsSection:
-            let model = summary[section] as! PaymentHome.PaymentOptions.ViewModel.WalletsViewModel
-            rows = model.wallets.count
-        case PaymentHomeConstants.Values.IdentifierNames.SavedCardsSection:
-            let model = summary[section] as! PaymentHome.PaymentOptions.ViewModel.CardsViewModel
-            rows = model.cards.count
+        case SectionType.wallet.rawValue:
+            let model = summary[section] as! PaymentHome.PaymentOptions.ViewModel.WalletSectionViewModel
+            rows = model.info.count
+        case SectionType.card.rawValue:
+            let model = summary[section] as! PaymentHome.PaymentOptions.ViewModel.CardSectionViewModel
+            rows = model.info.count
+        case SectionType.netbank.rawValue:
+            let model = summary[section] as! PaymentHome.PaymentOptions.ViewModel.NetbankSectionViewModel
+            rows = model.info.count
         default:
             break
         }
@@ -106,43 +109,90 @@ extension PaymentHomeViewController: UITableViewDataSource {
         var cell = UITableViewCell()
         let identifier = summary[indexPath.section].identifier
         switch identifier {
-        case PaymentHomeConstants.Values.IdentifierNames.HeaderTableCell:
-            let lCell = tableView.dequeueReusableCell(withIdentifier: identifier,
-                                                      for: indexPath) as! HeaderTableCell
-            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.HeaderViewModel
-            lCell.configureCellWithModel(model)
-            cell = lCell
-        case PaymentHomeConstants.Values.IdentifierNames.FooterTableCell:
-            let lCell = tableView.dequeueReusableCell(withIdentifier: identifier,
-                                                      for: indexPath) as! FooterTableCell
-            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.FooterViewModel
-            lCell.configureCellWithModel(model)
-            cell = lCell
-        case PaymentHomeConstants.Values.IdentifierNames.UPITableCell:
-            let lCell = tableView.dequeueReusableCell(withIdentifier: identifier,
-                                                      for: indexPath) as! UPITableCell
-            cell = lCell
-        case PaymentHomeConstants.Values.IdentifierNames.SavedCardsSection:
-            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.CardsViewModel
-            let cardModel = model.cards[indexPath.row]
-            let lCell = tableView.dequeueReusableCell(withIdentifier: PaymentHomeConstants.Values.IdentifierNames.SavedCardTableCell,
-                                                      for: indexPath) as! SavedCardTableCell
-            lCell.configureCellWithModel(cardModel)
-            cell = lCell
-
-        case PaymentHomeConstants.Values.IdentifierNames.WalletsSection:
-            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.WalletsViewModel
-            let walletModel = model.wallets[indexPath.row]
-            let lCell = tableView.dequeueReusableCell(withIdentifier: PaymentHomeConstants.Values.IdentifierNames.WalletTableCell,
-                                                      for: indexPath) as! WalletTableCell
-            lCell.configureCellWithModel(walletModel)
-            cell = lCell
-        case PaymentHomeConstants.Values.IdentifierNames.NetBanksTableCell:
-            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.PreferredBanksViewModel
-            let lCell = tableView.dequeueReusableCell(withIdentifier: identifier,
-                                                      for: indexPath) as! NetBanksTableCell
-            lCell.configureCellWithModel(model.banks)
-            cell = lCell
+        case SectionType.upi.rawValue:
+            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.UPISectionViewModel
+            let info = model.info[indexPath.row]
+            let infoIdentifier = info.identifier
+            switch infoIdentifier {
+            case PaymentHomeConstants.Values.IdentifierNames.UPITableCell:
+                let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,
+                                                          for: indexPath) as! UPITableCell
+                cell = lCell
+            default:
+                break
+            }
+        case SectionType.card.rawValue:
+            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.CardSectionViewModel
+            let info = model.info[indexPath.row]
+            let infoIdentifier = info.identifier
+            switch infoIdentifier {
+            case PaymentHomeConstants.Values.IdentifierNames.HeaderTableCell:
+                let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,
+                                                          for: indexPath) as! HeaderTableCell
+                let headerModel = info as! PaymentHome.PaymentOptions.ViewModel.HeaderViewModel
+                lCell.configureCellWithModel(headerModel)
+                cell = lCell
+            case PaymentHomeConstants.Values.IdentifierNames.SavedCardTableCell:
+                let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,
+                                                          for: indexPath) as! SavedCardTableCell
+                let cardModel = info as! PaymentHome.PaymentOptions.ViewModel.CardsViewModel.CardViewModel
+                lCell.configureCellWithModel(cardModel)
+                cell = lCell
+            case PaymentHomeConstants.Values.IdentifierNames.FooterTableCell:
+                let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,
+                                                          for: indexPath) as! FooterTableCell
+                let footerModel = info as! PaymentHome.PaymentOptions.ViewModel.FooterViewModel
+                lCell.configureCellWithModel(footerModel)
+                cell = lCell
+            default:
+                break
+            }
+        case SectionType.wallet.rawValue:
+            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.WalletSectionViewModel
+            let info = model.info[indexPath.row]
+            let infoIdentifier = info.identifier
+            switch infoIdentifier {
+            case PaymentHomeConstants.Values.IdentifierNames.HeaderTableCell:
+                let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,
+                                                          for: indexPath) as! HeaderTableCell
+                let headerModel = info as! PaymentHome.PaymentOptions.ViewModel.HeaderViewModel
+                lCell.configureCellWithModel(headerModel)
+                cell = lCell
+            case PaymentHomeConstants.Values.IdentifierNames.WalletTableCell:
+                let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,
+                                                          for: indexPath) as! WalletTableCell
+                let walletModel = info as! PaymentHome.PaymentOptions.ViewModel.WalletsViewModel.WalletViewModel
+                lCell.configureCellWithModel(walletModel)
+                cell = lCell
+            default:
+                break
+            }
+        case SectionType.netbank.rawValue:
+            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.NetbankSectionViewModel
+            let info = model.info[indexPath.row]
+            let infoIdentifier = info.identifier
+            switch infoIdentifier {
+            case PaymentHomeConstants.Values.IdentifierNames.HeaderTableCell:
+                let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,
+                                                          for: indexPath) as! HeaderTableCell
+                let headerModel = info as! PaymentHome.PaymentOptions.ViewModel.HeaderViewModel
+                lCell.configureCellWithModel(headerModel)
+                cell = lCell
+            case PaymentHomeConstants.Values.IdentifierNames.NetBanksTableCell:
+                let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,
+                                                          for: indexPath) as! NetBanksTableCell
+                let preferredBanksModel = info as! PaymentHome.PaymentOptions.ViewModel.PreferredBanksViewModel
+                lCell.configureCellWithModel(preferredBanksModel.banks)
+                cell = lCell
+            case PaymentHomeConstants.Values.IdentifierNames.FooterTableCell:
+                let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,
+                                                          for: indexPath) as! FooterTableCell
+                let footerModel = info as! PaymentHome.PaymentOptions.ViewModel.FooterViewModel
+                lCell.configureCellWithModel(footerModel)
+                cell = lCell
+            default:
+                break
+            }
         default:
             break
         }
@@ -153,35 +203,55 @@ extension PaymentHomeViewController: UITableViewDataSource {
 extension PaymentHomeViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        var height: CGFloat = 5
-//        let identifier = summary[section].identifier
-//
-//        switch identifier {
-//        case HomeNewKeys.IdentifierNames.PlatinumTableCell:
-//            break
-//        default:
-//            break
-//        }
+        let height: CGFloat = 5
         return height
     }
     
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        var height: CGFloat = CGFloat.leastNonzeroMagnitude
-//        let identifier = summary[section].identifier
-//        switch identifier {
-//        case "OptionsTableCell":
-//            height = 5
-//        default:
-//            break
-//        }
+        let height: CGFloat = CGFloat.leastNonzeroMagnitude
         return height
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let identifier = summary[indexPath.section].identifier
         switch identifier {
-        case PaymentHomeConstants.Values.IdentifierNames.UPITableCell:
-            router?.routeToUPI()
+        case SectionType.upi.rawValue:
+            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.UPISectionViewModel
+            let infoIdentifier = model.info[indexPath.row].identifier
+            switch infoIdentifier {
+            case PaymentHomeConstants.Values.IdentifierNames.UPITableCell:
+                router?.routeToUPI()
+            default:
+                break
+            }
+        case SectionType.netbank.rawValue:
+            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.NetbankSectionViewModel
+            let infoIdentifier = model.info[indexPath.row].identifier
+            switch infoIdentifier {
+            case PaymentHomeConstants.Values.IdentifierNames.FooterTableCell:
+                router?.routeToMoreBanks()
+            default:
+                break
+            }
+        case SectionType.wallet.rawValue:
+            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.WalletSectionViewModel
+            let infoIdentifier = model.info[indexPath.row].identifier
+            switch infoIdentifier {
+            case PaymentHomeConstants.Values.IdentifierNames.WalletTableCell:
+                router?.routeToPayWallet()
+            default:
+                break
+            }
+        case SectionType.card.rawValue:
+            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.CardSectionViewModel
+            let infoIdentifier = model.info[indexPath.row].identifier
+            switch infoIdentifier {
+            case PaymentHomeConstants.Values.IdentifierNames.FooterTableCell:
+                router?.routeToCard()
+                break
+            default:
+                break
+            }
         default:
             break
         }

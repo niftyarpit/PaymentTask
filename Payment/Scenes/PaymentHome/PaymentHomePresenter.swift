@@ -18,9 +18,7 @@ protocol PaymentHomePresentationLogic {
 
 class PaymentHomePresenter: PaymentHomePresentationLogic {
     weak var viewController: PaymentHomeDisplayLogic?
-    
-    // MARK: Do something
-    
+        
     func presentPaymentOptions(response: PaymentHome.PaymentOptions.Response) {
         let viewModel = getViewModel(from: response)
         viewController?.displayPaymentOptions(viewModel: viewModel)
@@ -29,45 +27,64 @@ class PaymentHomePresenter: PaymentHomePresentationLogic {
     private func getViewModel(from response: PaymentHome.PaymentOptions.Response) -> PaymentHome.PaymentOptions.ViewModel {
         var summary: [Identifiable] = []
         if let upi = response.upi {
-            summary += [PaymentHome.PaymentOptions.ViewModel.UPIViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.UPITableCell)]
+            var info: [Identifiable] = []
+            info += [PaymentHome.PaymentOptions.ViewModel.UPIViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.UPITableCell)]
+            summary += [PaymentHome.PaymentOptions.ViewModel.UPISectionViewModel(identifier: SectionType.upi.rawValue,
+                                                                                 info: info)]
         }
         if let card = response.card {
-            summary += [PaymentHome.PaymentOptions.ViewModel.HeaderViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.HeaderTableCell,
-                                                                             text: "Saved Cards")]
-            var cards: [PaymentHome.PaymentOptions.ViewModel.CardsViewModel.CardViewModel] = []
-            for lCard in card.cards {
-                cards += [PaymentHome.PaymentOptions.ViewModel.CardsViewModel.CardViewModel(imageUrl: lCard.logo,
-                                                                                            number: lCard.number)]
+            var info: [Identifiable] = []
+            if card.cards.count > 0 {
+                let header = PaymentHome.PaymentOptions.ViewModel.HeaderViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.HeaderTableCell,
+                                                                                   text: "Saved Cards")
+                info += [header]
+                for lCard in card.cards {
+                    info += [PaymentHome.PaymentOptions.ViewModel.CardsViewModel.CardViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.SavedCardTableCell,
+                                                                                               imageUrl: lCard.logo,
+                                                                                                number: lCard.number)]
+                }
             }
-            summary += [PaymentHome.PaymentOptions.ViewModel.CardsViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.SavedCardsSection,
-                                                                            cards: cards)]
-            summary += [PaymentHome.PaymentOptions.ViewModel.FooterViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.FooterTableCell,
-                                                                             text: "Debit / Credit Card Payment")]
+            let footer = PaymentHome.PaymentOptions.ViewModel.FooterViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.FooterTableCell,
+                                                                               text: "Debit / Credit Card Payment")
+            info += [footer]
+            summary += [PaymentHome.PaymentOptions.ViewModel.CardSectionViewModel(identifier: SectionType.card.rawValue,
+                                                                           info: info)]
         }
-        summary += [PaymentHome.PaymentOptions.ViewModel.HeaderViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.HeaderTableCell,
-                                                                         text: "Wallets")]
-        var wallets: [PaymentHome.PaymentOptions.ViewModel.WalletsViewModel.WalletViewModel] = []
-        for aWallet in response.wallet {
-            wallets += [PaymentHome.PaymentOptions.ViewModel.WalletsViewModel.WalletViewModel(imageUrl: aWallet.logo,
-                                                                                              code: aWallet.code,
-                                                                                              name: aWallet.name)]
+        if response.wallet.count > 0 {
+            var info: [Identifiable] = []
+            let header = PaymentHome.PaymentOptions.ViewModel.HeaderViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.HeaderTableCell,
+                                                                               text: "Wallets")
+            info += [header]
+            for wallet in response.wallet {
+                info += [PaymentHome.PaymentOptions.ViewModel.WalletsViewModel.WalletViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.WalletTableCell,
+                                                                                               imageUrl: wallet.logo,
+                                                                                               code: wallet.code,
+                                                                                               name: wallet.name)]
+            }
+            summary += [PaymentHome.PaymentOptions.ViewModel.WalletSectionViewModel(identifier: SectionType.wallet.rawValue,
+                                                                                    info: info)]
         }
-        summary += [PaymentHome.PaymentOptions.ViewModel.WalletsViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.WalletsSection,
-                                                                          wallets: wallets)]
         if let netbanking = response.netbanking {
-            summary += [PaymentHome.PaymentOptions.ViewModel.HeaderViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.HeaderTableCell,
-                                                                             text: "Net Banking")]
-            var banks: [PaymentHome.PaymentOptions.ViewModel.PreferredBanksViewModel.PreferredBankViewModel] = []
-            for preferred in netbanking.preferred {
-                banks += [PaymentHome.PaymentOptions.ViewModel.PreferredBanksViewModel.PreferredBankViewModel(imageUrl: preferred.logo,
-                                                                                                              code: preferred.code,
-                                                                                                              name: preferred.name)]
+            var info: [Identifiable] = []
+            if netbanking.preferred.count > 0 {
+                let header = PaymentHome.PaymentOptions.ViewModel.HeaderViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.HeaderTableCell,
+                                                                                  text: "Net Banking")
+                info += [header]
+                var banks: [PaymentHome.PaymentOptions.ViewModel.PreferredBanksViewModel.PreferredBankViewModel] = []
+                for preferred in netbanking.preferred {
+                    banks += [PaymentHome.PaymentOptions.ViewModel.PreferredBanksViewModel.PreferredBankViewModel(imageUrl: preferred.logo,
+                                                                                                                  code: preferred.code,
+                                                                                                                  name: preferred.name)]
+                }
+                info += [PaymentHome.PaymentOptions.ViewModel.PreferredBanksViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.NetBanksTableCell,
+                                                                                                     banks: banks)]
+
             }
-            summary += [PaymentHome.PaymentOptions.ViewModel.PreferredBanksViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.NetBanksTableCell,
-                                                                                     banks: banks)]
-            summary += [PaymentHome.PaymentOptions.ViewModel.FooterViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.FooterTableCell,
-                                                                             text: "More Banks")]
-            
+            let footer = PaymentHome.PaymentOptions.ViewModel.FooterViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.FooterTableCell,
+                                                                              text: "More Banks")
+            info += [footer]
+            summary += [PaymentHome.PaymentOptions.ViewModel.NetbankSectionViewModel(identifier: SectionType.netbank.rawValue,
+                                                                                  info: info)]
         }
         let viewModel = PaymentHome.PaymentOptions.ViewModel(summary: summary)
         return viewModel

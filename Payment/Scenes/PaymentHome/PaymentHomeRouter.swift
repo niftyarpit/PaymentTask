@@ -16,6 +16,7 @@ import UIKit
     func routeToUPI()
     func routeToLinkWallet()
     func routeToPayWallet()
+    func routeToMoreBanks()
     func routeToCard()
 }
 
@@ -48,6 +49,14 @@ class PaymentHomeRouter: NSObject, PaymentHomeRoutingLogic, PaymentHomeDataPassi
         let sb = UIStoryboard(name: "Payment",
                               bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "PayWalletViewController") as! PayWalletViewController
+        viewController!.navigationController?.pushViewController(vc,
+                                                                 animated: true)
+    }
+
+    func routeToMoreBanks() {
+        let sb = UIStoryboard(name: "Payment",
+                              bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "NetBanksViewController") as! NetBanksViewController
         viewController!.navigationController?.pushViewController(vc,
                                                                  animated: true)
     }

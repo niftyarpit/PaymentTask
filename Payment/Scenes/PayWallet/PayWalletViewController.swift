@@ -63,6 +63,7 @@ class PayWalletViewController: UIViewController, PayWalletDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         doSomething()
+        navigationItem.title = "Wallet"
     }
     
     // MARK: Do something
