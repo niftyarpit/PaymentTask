@@ -52,3 +52,13 @@ enum PaymentHomeConstants {
     }
 }
 
+enum CardPaymentConstants {
+    enum Values {
+        enum IdentifierNames {
+            static let CardPaymentTableCell = "CardPaymentTableViewCell"
+            static let SaveTableCell = "CardPaymentSaveTableViewCell"
+            static let PayTableCell = "CardPaymentPayTableViewCell"
+        }
+    }
+}
+

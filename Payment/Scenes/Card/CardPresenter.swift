@@ -13,16 +13,50 @@
 import UIKit
 
 protocol CardPresentationLogic {
-    func presentSomething(response: Card.Something.Response)
+    func presentInitial(response: Card.Payment.Response)
 }
 
 class CardPresenter: CardPresentationLogic {
     weak var viewController: CardDisplayLogic?
     
-    // MARK: Do something
+    // MARK: Do Payment
     
-    func presentSomething(response: Card.Something.Response) {
-        let viewModel = Card.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+    func presentInitial(response: Card.Payment.Response) {
+        let itemsViewModel = getCellItemViewModel(response: response)
+        let viewModel = Card.Payment.ViewModel(cellItems: itemsViewModel,
+                                               shouldReload: response.cardDetails.shouldReload,
+                                               isValid: response.cardValidation.isValid)
+        viewController?.displayInitial(viewModel: viewModel)
+    }
+    
+    private func getCellItemViewModel(response: Card.Payment.Response) -> [CardCellId] {
+        var items: [CardCellId] = []
+        items += [Card.Payment.ViewModel.CardPaymentViewModel(type: .cardNumber,
+                                                              title: "CARD NUMBER",
+                                                              placeHolder: "xxxx - xxxx - xxxx - xxxx",
+                                                              text: response.cardDetails.cardNumber,
+                                                              keybord: .decimalPad,
+                                                              isErr: response.cardValidation.isValid,
+                                                              errMessage: response.cardValidation.cardNumberErrMessage)]
+        items += [Card.Payment.ViewModel.CardPaymentViewModel(type: .validThrough,
+                                                              title: "VALID THROUGH",
+                                                              placeHolder: "MM / YY",
+                                                              text: response.cardDetails.expiryDate,
+                                                              keybord: .default,
+                                                              isErr: response.cardValidation.isValid,
+                                                              errMessage: response.cardValidation.validThroughErrMessage)]
+        items += [Card.Payment.ViewModel.CardPaymentViewModel(type: .cvv,
+                                                              title: "CVV",
+                                                              placeHolder: "xxx",
+                                                              text: response.cardDetails.cvv,
+                                                              keybord: .decimalPad,
+                                                              isErr: response.cardValidation.isValid,
+                                                              errMessage: response.cardValidation.cvvErrMessage)]
+        items += [Card.Payment.ViewModel.SaveViewModel(type: .save,
+                                                       title: "Save this card for quick checkout",
+                                                       isChecked: false)]
+        items += [Card.Payment.ViewModel.PayViewModel(type: .pay,
+                                                      title: "Pay 345")]
+        return items
     }
 }

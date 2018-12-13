@@ -13,25 +13,58 @@
 import UIKit
 
 protocol CardBusinessLogic {
-    func doSomething(request: Card.Something.Request)
+    func doInitial(request: Card.Payment.Request)
 }
 
 protocol CardDataStore {
-    //var name: String { get set }
+    var cardDetails: Card.CardDetails { get set }
 }
 
 class CardInteractor: CardBusinessLogic, CardDataStore {
     var presenter: CardPresentationLogic?
     var worker: CardWorker?
-    //var name: String = ""
+    var cardDetails = Card.CardDetails()
     
-    // MARK: Do something
+    // MARK: Do Payment
     
-    func doSomething(request: Card.Something.Request) {
-        worker = CardWorker()
-        worker?.doSomeWork()
-        
-        let response = Card.Something.Response()
-        presenter?.presentSomething(response: response)
+    func doInitial(request: Card.Payment.Request) {
+        cardDetails = request.cardDetails
+        let validation = getValidation()
+        let response = Card.Payment.Response(cardDetails: request.cardDetails,
+                                             cardValidation: validation)
+        presenter?.presentInitial(response: response)
+    }
+    
+    // MARK: Private func
+    
+    private func getValidation() -> Card.CardValidation {
+        var validation = Card.CardValidation()
+        if cardDetails.cardNumber == EMPTYSTRING,
+            cardDetails.expiryDate == EMPTYSTRING,
+            cardDetails.cvv == EMPTYSTRING {
+            validation.isValid = false
+            validation.cardNumberErrMessage = "Invalid Card Number"
+            validation.validThroughErrMessage = "Please select expiry"
+            validation.cvvErrMessage = "Invalid CVV Number"
+        }
+        if cardDetails.cardNumber != EMPTYSTRING {
+            validation.isValid = true
+            validation.cardNumberErrMessage = EMPTYSTRING
+        } else {
+            validation.isValid = false
+        }
+        if cardDetails.expiryDate != EMPTYSTRING {
+            validation.isValid = true
+            validation.validThroughErrMessage = EMPTYSTRING
+        } else {
+            validation.isValid = false
+        }
+        if cardDetails.cvv != EMPTYSTRING {
+            validation.isValid = true
+            validation.cvvErrMessage = EMPTYSTRING
+        } else {
+            validation.isValid = false
+        }
+        return validation
     }
 }

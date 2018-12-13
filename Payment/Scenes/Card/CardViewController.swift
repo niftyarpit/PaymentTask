@@ -13,12 +13,16 @@
 import UIKit
 
 protocol CardDisplayLogic: class {
-    func displaySomething(viewModel: Card.Something.ViewModel)
+    func displayInitial(viewModel: Card.Payment.ViewModel)
 }
 
 class CardViewController: UIViewController, CardDisplayLogic {
     var interactor: CardBusinessLogic?
     var router: (NSObjectProtocol & CardRoutingLogic & CardDataPassing)?
+    var cellItems: [CardCellId] = []
+    lazy var cardDetails = Card.CardDetails()
+    
+    @IBOutlet weak var tblView: UITableView!
     
     // MARK: Object lifecycle
     
@@ -62,19 +66,80 @@ class CardViewController: UIViewController, CardDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+        title = "Card Payment"
+        doInitial()
     }
     
     // MARK: Do something
     
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething() {
-        let request = Card.Something.Request()
-        interactor?.doSomething(request: request)
+    func doInitial() {
+        let request = Card.Payment.Request(cardDetails: cardDetails)
+        interactor?.doInitial(request: request)
     }
     
-    func displaySomething(viewModel: Card.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+    func displayInitial(viewModel: Card.Payment.ViewModel) {
+        cellItems = viewModel.cellItems
+        if viewModel.shouldReload {
+            DispatchQueue.main.async { [weak self] in
+                self?.tblView.reloadData()
+            }
+        }
+    }
+}
+
+extension CardViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cellItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        switch cellItems[indexPath.row].type {
+        case .cardNumber, .validThrough, .cvv:
+            guard let cardModel = cellItems[indexPath.row] as? Card.Payment.ViewModel.CardPaymentViewModel else {
+                break
+            }
+            let lCell = tableView.dequeueReusableCell(withIdentifier: CardPaymentConstants.Values.IdentifierNames.CardPaymentTableCell, for: indexPath) as! CardPaymentTableViewCell
+            lCell.configureCell(with: cardModel)
+            lCell.datePickerHandler = { [weak self] monthYear in
+                guard let strongSelf = self else { return }
+                strongSelf.cardDetails.expiryDate = monthYear
+                strongSelf.cardDetails.shouldReload = false
+                strongSelf.doInitial()
+            }
+            lCell.txtFieldDoneHandler = { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.view.endEditing(true)
+            }
+            lCell.txtDidChangeHandler = { [weak self] type, text in
+                guard let strongSelf = self else { return }
+                switch type {
+                case .cardNumber:
+                    strongSelf.cardDetails.cardNumber = text
+                case .cvv:
+                    strongSelf.cardDetails.cvv = text
+                case .validThrough, .save, .pay:
+                    break
+                }
+                strongSelf.cardDetails.shouldReload = false
+                strongSelf.doInitial()
+            }
+            cell = lCell
+        case .save:
+            guard let saveModel = cellItems[indexPath.row] as? Card.Payment.ViewModel.SaveViewModel else {
+                break
+            }
+            let lCell = tableView.dequeueReusableCell(withIdentifier: CardPaymentConstants.Values.IdentifierNames.SaveTableCell, for: indexPath) as! CardPaymentSaveTableViewCell
+            lCell.configureCell(with: saveModel)
+            cell = lCell
+        case .pay:
+            guard let payModel = cellItems[indexPath.row] as? Card.Payment.ViewModel.PayViewModel else {
+                break
+            }
+            let lCell = tableView.dequeueReusableCell(withIdentifier: CardPaymentConstants.Values.IdentifierNames.PayTableCell, for: indexPath) as! CardPaymentPayTableViewCell
+            lCell.configureCell(with: payModel)
+            cell = lCell
+        }
+        return cell
     }
 }

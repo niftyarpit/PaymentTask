@@ -12,15 +12,66 @@
 
 import UIKit
 
+enum CardCellType {
+    case cardNumber
+    case validThrough
+    case cvv
+    case save
+    case pay
+}
+
+protocol CardCellId {
+    var type: CardCellType { get }
+}
+
 enum Card {
     // MARK: Use cases
     
-    enum Something {
+    struct CardDetails {
+        var cardNumber = EMPTYSTRING
+        var expiryDate = EMPTYSTRING
+        var cvv = EMPTYSTRING
+        var isSaveChecked = false
+        var shouldReload = true
+    }
+    
+    struct CardValidation {
+        var isValid = false
+        var cardNumberErrMessage = EMPTYSTRING
+        var validThroughErrMessage = EMPTYSTRING
+        var cvvErrMessage = EMPTYSTRING
+    }
+    
+    enum Payment {
         struct Request {
+            var cardDetails: CardDetails
         }
         struct Response {
+            var cardDetails: CardDetails
+            var cardValidation: CardValidation
         }
         struct ViewModel {
+            struct CardPaymentViewModel: CardCellId {
+                var type: CardCellType
+                var title: String
+                var placeHolder: String
+                var text: String
+                var keybord: UIKeyboardType
+                var isErr: Bool
+                var errMessage: String
+            }
+            struct SaveViewModel: CardCellId {
+                var type: CardCellType
+                var title: String
+                var isChecked: Bool
+            }
+            struct PayViewModel: CardCellId {
+                var type: CardCellType
+                var title: String
+            }
+            var cellItems: [CardCellId]
+            var shouldReload: Bool
+            var isValid: Bool
         }
     }
 }
