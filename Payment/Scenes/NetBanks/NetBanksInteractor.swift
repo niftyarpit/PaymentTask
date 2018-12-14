@@ -17,16 +17,25 @@ protocol NetBanksBusinessLogic {
 }
 
 protocol NetBanksDataStore {
-    var banks: [String: Any] {get set}
+    var banksInfo: [String: Any] {get set}
 }
 
 class NetBanksInteractor: NetBanksBusinessLogic, NetBanksDataStore {
-    var banks: [String: Any] = [:]
+    var banksInfo: [String: Any] = [:]
     
     var presenter: NetBanksPresentationLogic?
     
     func fetchList(request: NetBanks.List.Request) {
-        let response = NetBanks.List.Response()
+        let response = getResponse(from: banksInfo)
         presenter?.presentList(response: response)
+    }
+    
+    private func getResponse(from data: [String: Any]) -> NetBanks.List.Response {
+        let banks = data.map { (key, value) in
+            return NetBanks.List.Response.BankInfoResponse(code: key,
+                                                           name: value as? String ?? EMPTYSTRING)
+        }
+        let response = NetBanks.List.Response(banks: banks)
+        return response
     }
 }

@@ -20,7 +20,13 @@ class NetBanksPresenter: NetBanksPresentationLogic {
     weak var viewController: NetBanksDisplayLogic?
     
     func presentList(response: NetBanks.List.Response) {
-        let viewModel = NetBanks.List.ViewModel()
+        let viewModel = getViewModel(from: response.banks)
         viewController?.displayList(viewModel: viewModel)
+    }
+    
+    private func getViewModel(from banks: [NetBanks.List.Response.BankInfoResponse]) -> NetBanks.List.ViewModel {
+        let allBanks = banks.map { NetBanks.List.ViewModel.BankInfoViewModel(name: $0.name) }
+        let viewModel = NetBanks.List.ViewModel(banks: allBanks)
+        return viewModel
     }
 }

@@ -17,14 +17,13 @@ protocol PaymentHomeBusinessLogic {
 }
 
 protocol PaymentHomeDataStore {
-    var allBanks: [String: Any] {get}
+    var banksInfo: [String: Any] {get}
 }
 
 class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
     var presenter: PaymentHomePresentationLogic?
     lazy var worker = PaymentHomeWorker()
-    var allBanks: [String : Any] = [:]
-    // MARK: Do something
+    var banksInfo: [String : Any] = [:]
     
     func fetchPaymentOptions(request: PaymentHome.PaymentOptions.Request) {
         worker.fetchPaymentOptionsData {[weak self] (result: FetchDataResult) in
@@ -33,7 +32,7 @@ class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
             case .success(let fetchedData):
                 let responseNode = fetchedData["responseNode"] as! ResponseNode
                 let response = strongSelf.getResponse(from: responseNode)
-                strongSelf.allBanks = response.netbanking?.all ?? [:]
+                strongSelf.banksInfo = response.netbanking?.all ?? [:]
                 strongSelf.presenter?.presentPaymentOptions(response: response)
             case .failure(let error):
                 switch error {

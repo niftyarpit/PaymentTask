@@ -19,8 +19,17 @@ enum NetBanks {
         struct Request {
         }
         struct Response {
+            struct BankInfoResponse {
+                var code: String
+                var name: String
+            }
+            var banks: [BankInfoResponse]
         }
         struct ViewModel {
+            struct BankInfoViewModel {
+                var name: String
+            }
+            var banks: [BankInfoViewModel]
         }
     }
 }

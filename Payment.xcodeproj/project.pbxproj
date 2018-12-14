@@ -26,6 +26,7 @@
 		CE3FDCC921C2727A00D34C36 /* NetBanksModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FDCC321C2727A00D34C36 /* NetBanksModels.swift */; };
 		CE3FDCCA21C2727A00D34C36 /* NetBanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FDCC421C2727A00D34C36 /* NetBanksViewController.swift */; };
 		CE3FDCCB21C2727A00D34C36 /* NetBanksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FDCC521C2727A00D34C36 /* NetBanksInteractor.swift */; };
+		CE5343D721C39738001D7517 /* NetBankTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343D621C39737001D7517 /* NetBankTableCell.swift */; };
 		CE611BE421B783A600E46A55 /* PaymentHomeData.json in Resources */ = {isa = PBXBuildFile; fileRef = CE611BE321B783A600E46A55 /* PaymentHomeData.json */; };
 		CE611BE621B784C000E46A55 /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE611BE521B784C000E46A55 /* Payment.storyboard */; };
 		CE611BEC21B95D0100E46A55 /* WalletTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE611BEB21B95D0100E46A55 /* WalletTableCell.swift */; };
@@ -110,6 +111,7 @@
 		CE3FDCC321C2727A00D34C36 /* NetBanksModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBanksModels.swift; sourceTree = "<group>"; };
 		CE3FDCC421C2727A00D34C36 /* NetBanksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBanksViewController.swift; sourceTree = "<group>"; };
 		CE3FDCC521C2727A00D34C36 /* NetBanksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBanksInteractor.swift; sourceTree = "<group>"; };
+		CE5343D621C39737001D7517 /* NetBankTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBankTableCell.swift; sourceTree = "<group>"; };
 		CE611BE321B783A600E46A55 /* PaymentHomeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PaymentHomeData.json; sourceTree = "<group>"; };
 		CE611BE521B784C000E46A55 /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		CE611BEB21B95D0100E46A55 /* WalletTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableCell.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 		CE3FDCBF21C2721E00D34C36 /* NetBanks */ = {
 			isa = PBXGroup;
 			children = (
+				CE5343D521C39700001D7517 /* CustomViews */,
 				CE3FDCC221C2727A00D34C36 /* NetBanksRouter.swift */,
 				CE3FDCC421C2727A00D34C36 /* NetBanksViewController.swift */,
 				CE3FDCC021C2727A00D34C36 /* NetBanksPresenter.swift */,
@@ -269,6 +272,14 @@
 				CE3FDCC321C2727A00D34C36 /* NetBanksModels.swift */,
 			);
 			path = NetBanks;
+			sourceTree = "<group>";
+		};
+		CE5343D521C39700001D7517 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				CE5343D621C39737001D7517 /* NetBankTableCell.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		CE611BEA21B95CD600E46A55 /* CustomViews */ = {
@@ -491,6 +502,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE5343D721C39738001D7517 /* NetBankTableCell.swift in Sources */,
 				CE108AB721B5A6020007E313 /* PaymentHomeInteractor.swift in Sources */,
 				CE3FDCCB21C2727A00D34C36 /* NetBanksInteractor.swift in Sources */,
 				CE611BF721BA77D100E46A55 /* ConstantsHelper.swift in Sources */,

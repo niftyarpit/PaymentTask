@@ -57,6 +57,8 @@ class PaymentHomeRouter: NSObject, PaymentHomeRoutingLogic, PaymentHomeDataPassi
         let sb = UIStoryboard(name: "Payment",
                               bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "NetBanksViewController") as! NetBanksViewController
+        var destinationDS = vc.router!.dataStore!
+        destinationDS.banksInfo = dataStore!.banksInfo
         viewController!.navigationController?.pushViewController(vc,
                                                                  animated: true)
     }

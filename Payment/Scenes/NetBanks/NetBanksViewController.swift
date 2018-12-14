@@ -19,6 +19,8 @@ protocol NetBanksDisplayLogic: class {
 class NetBanksViewController: UIViewController, NetBanksDisplayLogic {
     var interactor: NetBanksBusinessLogic?
     var router: (NSObjectProtocol & NetBanksRoutingLogic & NetBanksDataPassing)?
+    @IBOutlet weak var tableView: UITableView!
+    var bankNames: [NetBanks.List.ViewModel.BankInfoViewModel] = []
     
     // MARK: Object lifecycle
     
@@ -72,5 +74,45 @@ class NetBanksViewController: UIViewController, NetBanksDisplayLogic {
     }
     
     func displayList(viewModel: NetBanks.List.ViewModel) {
+        bankNames = viewModel.banks
+        tableView.reloadData()
+    }
+}
+
+extension NetBanksViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        let lCell = tableView.dequeueReusableCell(withIdentifier: "NetBankTableCell",
+                                                  for: indexPath) as! NetBankTableCell
+        lCell.configureCellWithModel(bankNames[indexPath.row])
+        cell = lCell
+        return cell
+    }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let rows = bankNames.count
+        return rows
+    }
+}
+
+extension NetBanksViewController: UITableViewDelegate {
+    
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let height: CGFloat = 5
+        return height
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        let height: CGFloat = CGFloat.leastNonzeroMagnitude
+        return height
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(bankNames[indexPath.row].name)
     }
 }
