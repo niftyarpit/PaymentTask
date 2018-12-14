@@ -36,7 +36,6 @@ enum Card {
     }
     
     struct CardValidation {
-        var isValid = false
         var cardNumberErrMessage = EMPTYSTRING
         var validThroughErrMessage = EMPTYSTRING
         var cvvErrMessage = EMPTYSTRING
@@ -71,6 +70,17 @@ enum Card {
             }
             var cellItems: [CardCellId]
             var shouldReload: Bool
+        }
+    }
+    
+    enum Validation {
+        struct Request {
+            var cardDetails: CardDetails
+        }
+        struct Response {
+            var isValid: Bool
+        }
+        struct ViewModel {
             var isValid: Bool
         }
     }

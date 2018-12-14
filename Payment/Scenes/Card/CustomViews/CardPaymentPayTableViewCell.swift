@@ -12,6 +12,8 @@ class CardPaymentPayTableViewCell: UITableViewCell {
 
     @IBOutlet weak var payButton: UIButton!
     
+    var payHandler: () -> Void = {}
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,6 +32,6 @@ class CardPaymentPayTableViewCell: UITableViewCell {
     }
 
     @IBAction func didTapOnPay(_ sender: UIButton) {
-        
+        payHandler()
     }
 }

@@ -13,6 +13,9 @@ class CardPaymentSaveTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
     
+    var saveHandler: (Bool) -> Void = { _ in
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,6 +35,6 @@ class CardPaymentSaveTableViewCell: UITableViewCell {
     }
     
     @IBAction func didTapOnCheck(_ sender: UIButton) {
-        
+        saveHandler(!sender.isSelected)
     }
 }

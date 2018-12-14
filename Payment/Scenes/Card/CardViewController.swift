@@ -77,6 +77,11 @@ class CardViewController: UIViewController, CardDisplayLogic {
         interactor?.doInitial(request: request)
     }
     
+    func validation() {
+        let request = Card.Validation.Request(cardDetails: cardDetails)
+        interactor?.validate(request: request)
+    }
+    
     func displayInitial(viewModel: Card.Payment.ViewModel) {
         cellItems = viewModel.cellItems
         if viewModel.shouldReload {
@@ -131,6 +136,12 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
             }
             let lCell = tableView.dequeueReusableCell(withIdentifier: CardPaymentConstants.Values.IdentifierNames.SaveTableCell, for: indexPath) as! CardPaymentSaveTableViewCell
             lCell.configureCell(with: saveModel)
+            lCell.saveHandler = { [weak self] isSelected in
+                guard let strongSelf = self else { return }
+                strongSelf.cardDetails.shouldReload = true
+                strongSelf.cardDetails.isSaveChecked = isSelected
+                strongSelf.doInitial()
+            }
             cell = lCell
         case .pay:
             guard let payModel = cellItems[indexPath.row] as? Card.Payment.ViewModel.PayViewModel else {
@@ -138,6 +149,11 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
             }
             let lCell = tableView.dequeueReusableCell(withIdentifier: CardPaymentConstants.Values.IdentifierNames.PayTableCell, for: indexPath) as! CardPaymentPayTableViewCell
             lCell.configureCell(with: payModel)
+            lCell.payHandler = { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.cardDetails.shouldReload = true
+                strongSelf.validation()
+            }
             cell = lCell
         }
         return cell
