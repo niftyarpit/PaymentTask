@@ -38,10 +38,12 @@ class PaymentHomePresenter: PaymentHomePresentationLogic {
                 let header = PaymentHome.PaymentOptions.ViewModel.HeaderViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.HeaderTableCell,
                                                                                    text: "Saved Cards")
                 info += [header]
-                for lCard in card.cards {
+                for (index,lCard) in card.cards.enumerated() {
                     info += [PaymentHome.PaymentOptions.ViewModel.CardsViewModel.CardViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.SavedCardTableCell,
                                                                                                imageUrl: lCard.logo,
-                                                                                                number: lCard.number)]
+                                                                                                number: lCard.number,
+                                                                                                isExpanded: lCard.isExpanded,
+                                                                                                index: index)]
                 }
             }
             let footer = PaymentHome.PaymentOptions.ViewModel.FooterViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.FooterTableCell,
@@ -59,7 +61,8 @@ class PaymentHomePresenter: PaymentHomePresentationLogic {
                 info += [PaymentHome.PaymentOptions.ViewModel.WalletsViewModel.WalletViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.WalletTableCell,
                                                                                                imageUrl: wallet.logo,
                                                                                                code: wallet.code,
-                                                                                               name: wallet.name)]
+                                                                                               name: wallet.name,
+                                                                                               isLinked: wallet.linkingEnabled)]
             }
             summary += [PaymentHome.PaymentOptions.ViewModel.WalletSectionViewModel(identifier: SectionType.wallet.rawValue,
                                                                                     info: info)]

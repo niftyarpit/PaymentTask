@@ -20,6 +20,8 @@ class UPIViewController: UIViewController, UPIDisplayLogic {
     var interactor: UPIBusinessLogic?
     var router: (NSObjectProtocol & UPIRoutingLogic & UPIDataPassing)?
     
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var payButton: UIButton!
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -64,6 +66,8 @@ class UPIViewController: UIViewController, UPIDisplayLogic {
         super.viewDidLoad()
         doSomething()
         navigationItem.title = "UPI"
+        containerView.dropShadow()
+        payButton.layer.cornerRadius = 5
     }
     
     // MARK: Do something

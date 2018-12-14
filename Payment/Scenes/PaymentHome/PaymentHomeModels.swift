@@ -32,6 +32,7 @@ enum PaymentHome {
     
     enum PaymentOptions {
         struct Request {
+            var selectedCardIndex: Int = -1
         }
         struct Response {
             struct NetbankingResponse {
@@ -50,6 +51,7 @@ enum PaymentHome {
                 struct SavedCardResponse {
                     var logo: String
                     var number: String
+                    var isExpanded: Bool
                 }
                 var enabled: Bool
                 var pg: String
@@ -98,6 +100,7 @@ enum PaymentHome {
                     var imageUrl: String
                     var code: String
                     var name: String
+                    var isLinked: Bool
                 }
                 var identifier: String
                 var wallets: [WalletViewModel]
@@ -119,6 +122,8 @@ enum PaymentHome {
                     var identifier: String
                     var imageUrl: String
                     var number: String
+                    var isExpanded: Bool
+                    var index: Int
                 }
                 var identifier: String
                 var cards: [CardViewModel]

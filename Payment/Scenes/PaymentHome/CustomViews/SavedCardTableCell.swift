@@ -16,16 +16,25 @@ class SavedCardTableCell: UITableViewCell {
     @IBOutlet weak var cvvTextField: UITextField!
     @IBOutlet weak var containerView: UIView!
     
+    var payButtonClickHandler: (Int) -> Void = {
+        _ in
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         payButton.dropShadow()
         payButton.layer.cornerRadius = 5
         cvvTextField.dropShadow()
-        containerView.isHidden = false
     }
     
     func configureCellWithModel(_ model: PaymentHome.PaymentOptions.ViewModel.CardsViewModel.CardViewModel) {
         savedCardNumberLabel.text = model.number
+        containerView.isHidden = !model.isExpanded
+        payButton.tag = model.index
+    }
+    
+    @IBAction func payButtonClicked(_ sender: UIButton) {
+        payButtonClickHandler(sender.tag)
     }
 }
 

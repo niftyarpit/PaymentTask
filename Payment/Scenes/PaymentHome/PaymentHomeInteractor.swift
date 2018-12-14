@@ -23,9 +23,11 @@ protocol PaymentHomeDataStore {
 class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
     var presenter: PaymentHomePresentationLogic?
     lazy var worker = PaymentHomeWorker()
-    var banksInfo: [String : Any] = [:]
+    var banksInfo: [String: Any] = [:]
+    private var expandedCardIndexes: [Int] = []
     
     func fetchPaymentOptions(request: PaymentHome.PaymentOptions.Request) {
+        populateExpandedCardIndexes(using: request.selectedCardIndex)
         worker.fetchPaymentOptionsData {[weak self] (result: FetchDataResult) in
             guard let strongSelf = self else { return }
             switch result {
@@ -40,6 +42,15 @@ class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
                     break
                 }
             }
+        }
+    }
+    
+    private func populateExpandedCardIndexes(using selectedIndex: Int) {
+        if expandedCardIndexes.contains(selectedIndex) {
+            expandedCardIndexes.removeAll()
+        } else {
+            expandedCardIndexes.removeAll()
+            expandedCardIndexes.append(selectedIndex)
         }
     }
     
@@ -74,11 +85,13 @@ class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
             let enabled = card.enabled
             let pg = card.pg
             var cards: [PaymentHome.PaymentOptions.Response.CardResponse.SavedCardResponse] = []
-            for lCard in card.cards {
+            for (index, lCard) in card.cards.enumerated() {
                 let logo = lCard.logo
                 let number = lCard.number
+                let isExpanded = expandedCardIndexes.contains(index)
                 cards += [PaymentHome.PaymentOptions.Response.CardResponse.SavedCardResponse(logo: logo,
-                                                                                             number: number)]
+                                                                                             number: number,
+                                                                                             isExpanded: isExpanded)]
             }
             cardNode = PaymentHome.PaymentOptions.Response.CardResponse(enabled: enabled,
                                                                         pg: pg,

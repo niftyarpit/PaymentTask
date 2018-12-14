@@ -137,6 +137,10 @@ extension PaymentHomeViewController: UITableViewDataSource {
                                                           for: indexPath) as! SavedCardTableCell
                 let cardModel = info as! PaymentHome.PaymentOptions.ViewModel.CardsViewModel.CardViewModel
                 lCell.configureCellWithModel(cardModel)
+                lCell.payButtonClickHandler = {[weak self] index in
+                    guard let strongSelf = self else { return }
+                    strongSelf.router?.routeToCard()
+                }
                 cell = lCell
             case PaymentHomeConstants.Values.IdentifierNames.FooterTableCell:
                 let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,
@@ -163,6 +167,11 @@ extension PaymentHomeViewController: UITableViewDataSource {
                                                           for: indexPath) as! WalletTableCell
                 let walletModel = info as! PaymentHome.PaymentOptions.ViewModel.WalletsViewModel.WalletViewModel
                 lCell.configureCellWithModel(walletModel)
+                lCell.linkButtonClickHandler = {[weak self] code in
+                    guard let strongSelf = self else { return }
+                    print(code)
+                    strongSelf.router?.routeToLinkWallet()
+                }
                 cell = lCell
             default:
                 break
@@ -238,20 +247,27 @@ extension PaymentHomeViewController: UITableViewDelegate {
             }
         case SectionType.wallet.rawValue:
             let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.WalletSectionViewModel
-            let infoIdentifier = model.info[indexPath.row].identifier
+            let info = model.info[indexPath.row]
+            let infoIdentifier = info.identifier
             switch infoIdentifier {
             case PaymentHomeConstants.Values.IdentifierNames.WalletTableCell:
+                let walletModel = info as! PaymentHome.PaymentOptions.ViewModel.WalletsViewModel.WalletViewModel
+                print(walletModel.code)
                 router?.routeToPayWallet()
             default:
                 break
             }
         case SectionType.card.rawValue:
             let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.CardSectionViewModel
-            let infoIdentifier = model.info[indexPath.row].identifier
+            let info = model.info[indexPath.row]
+            let infoIdentifier = info.identifier
             switch infoIdentifier {
             case PaymentHomeConstants.Values.IdentifierNames.FooterTableCell:
                 router?.routeToCard()
-                break
+            case PaymentHomeConstants.Values.IdentifierNames.SavedCardTableCell:
+                let cardModel = info as! PaymentHome.PaymentOptions.ViewModel.CardsViewModel.CardViewModel
+                let request = PaymentHome.PaymentOptions.Request(selectedCardIndex: cardModel.index)
+                interactor?.fetchPaymentOptions(request: request)
             default:
                 break
             }
