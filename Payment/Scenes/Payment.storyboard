@@ -486,9 +486,83 @@
                     <view key="view" contentMode="scaleToFill" id="GBI-lq-257">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OTP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQw-Ma-0U1">
+                                <rect key="frame" x="24.000000000000004" y="84" width="35.333333333333343" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <color key="textColor" red="0.96470588235294119" green="0.68235294117647061" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter OTP received on " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0J-Gb-LHA">
+                                <rect key="frame" x="24" y="128.33333333333334" width="149" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+91-8364792751" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wU-0o-x3S">
+                                <rect key="frame" x="177" y="128.33333333333334" width="116" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0R-Ce-Hdq">
+                                <rect key="frame" x="24" y="169.33333333333334" width="327" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OTP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2n-jc-dk3">
+                                        <rect key="frame" x="8" y="8.0000000000000284" width="26" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rq2-u0-qf5">
+                                        <rect key="frame" x="8" y="30" width="161" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="Vyz-Ok-S6l"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMS lost in its way?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQm-vO-gpk">
+                                <rect key="frame" x="24" y="273.33333333333331" width="128" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTn-wR-dKr">
+                                <rect key="frame" x="160" y="267.33333333333331" width="86" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
+                                <state key="normal" title="Resend OTP">
+                                    <color key="titleColor" red="0.96470588239999999" green="0.68235294120000001" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="q0R-Ce-Hdq" firstAttribute="leading" secondItem="25V-Oz-5Xu" secondAttribute="leading" constant="24" id="3nX-Qd-3bT"/>
+                            <constraint firstItem="A0J-Gb-LHA" firstAttribute="top" secondItem="fQw-Ma-0U1" secondAttribute="bottom" constant="24" id="7go-1z-ZiF"/>
+                            <constraint firstItem="fQw-Ma-0U1" firstAttribute="top" secondItem="25V-Oz-5Xu" secondAttribute="top" constant="40" id="8Hc-vD-jW5"/>
+                            <constraint firstItem="fQw-Ma-0U1" firstAttribute="leading" secondItem="25V-Oz-5Xu" secondAttribute="leading" constant="24" id="9dc-0D-FY2"/>
+                            <constraint firstItem="LTn-wR-dKr" firstAttribute="centerY" secondItem="gQm-vO-gpk" secondAttribute="centerY" id="ETH-X1-x5g"/>
+                            <constraint firstItem="LTn-wR-dKr" firstAttribute="leading" secondItem="gQm-vO-gpk" secondAttribute="trailing" constant="8" id="PAd-Jd-80j"/>
+                            <constraint firstItem="2wU-0o-x3S" firstAttribute="centerY" secondItem="A0J-Gb-LHA" secondAttribute="centerY" id="ez6-ZQ-UFg"/>
+                            <constraint firstItem="A0J-Gb-LHA" firstAttribute="leading" secondItem="25V-Oz-5Xu" secondAttribute="leading" constant="24" id="hI6-eT-xQY"/>
+                            <constraint firstItem="gQm-vO-gpk" firstAttribute="top" secondItem="q0R-Ce-Hdq" secondAttribute="bottom" constant="40" id="inH-Jw-lYh"/>
+                            <constraint firstItem="gQm-vO-gpk" firstAttribute="leading" secondItem="25V-Oz-5Xu" secondAttribute="leading" constant="24" id="n0Y-3y-GxO"/>
+                            <constraint firstItem="q0R-Ce-Hdq" firstAttribute="top" secondItem="A0J-Gb-LHA" secondAttribute="bottom" constant="24" id="oaj-wW-X99"/>
+                            <constraint firstItem="25V-Oz-5Xu" firstAttribute="trailing" secondItem="q0R-Ce-Hdq" secondAttribute="trailing" constant="24" id="rEr-Nf-KZl"/>
+                            <constraint firstItem="2wU-0o-x3S" firstAttribute="leading" secondItem="A0J-Gb-LHA" secondAttribute="trailing" constant="4" id="upf-L1-Mth"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="25V-Oz-5Xu"/>
                     </view>
+                    <connections>
+                        <outlet property="containerView" destination="q0R-Ce-Hdq" id="Zta-bn-uLP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pgy-dJ-kna" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
