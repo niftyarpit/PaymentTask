@@ -20,6 +20,7 @@ class LinkWalletViewController: UIViewController, LinkWalletDisplayLogic {
     var interactor: LinkWalletBusinessLogic?
     var router: (NSObjectProtocol & LinkWalletRoutingLogic & LinkWalletDataPassing)?
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var doneButton: UIButton!
     
     // MARK: Object lifecycle
     
@@ -66,6 +67,8 @@ class LinkWalletViewController: UIViewController, LinkWalletDisplayLogic {
         doSomething()
         navigationItem.title = "Link"
         containerView.dropShadow()
+        doneButton.dropShadow()
+        doneButton.layer.cornerRadius = 5
     }
     
     // MARK: Do something

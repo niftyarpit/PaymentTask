@@ -654,6 +654,14 @@
                                 <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NV7-HW-8u6">
+                                <rect key="frame" x="16" y="330.33333333333331" width="343" height="50"/>
+                                <color key="backgroundColor" red="0.33333333329999998" green="0.5450980392" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1JH-Kt-Vod"/>
+                                </constraints>
+                                <state key="normal" title="Done"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTn-wR-dKr">
                                 <rect key="frame" x="160" y="267.33333333333331" width="86" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
@@ -673,8 +681,11 @@
                             <constraint firstItem="2wU-0o-x3S" firstAttribute="centerY" secondItem="A0J-Gb-LHA" secondAttribute="centerY" id="ez6-ZQ-UFg"/>
                             <constraint firstItem="A0J-Gb-LHA" firstAttribute="leading" secondItem="25V-Oz-5Xu" secondAttribute="leading" constant="24" id="hI6-eT-xQY"/>
                             <constraint firstItem="gQm-vO-gpk" firstAttribute="top" secondItem="q0R-Ce-Hdq" secondAttribute="bottom" constant="40" id="inH-Jw-lYh"/>
+                            <constraint firstItem="NV7-HW-8u6" firstAttribute="leading" secondItem="25V-Oz-5Xu" secondAttribute="leading" constant="16" id="l2q-ku-9zj"/>
                             <constraint firstItem="gQm-vO-gpk" firstAttribute="leading" secondItem="25V-Oz-5Xu" secondAttribute="leading" constant="24" id="n0Y-3y-GxO"/>
                             <constraint firstItem="q0R-Ce-Hdq" firstAttribute="top" secondItem="A0J-Gb-LHA" secondAttribute="bottom" constant="24" id="oaj-wW-X99"/>
+                            <constraint firstItem="NV7-HW-8u6" firstAttribute="top" secondItem="gQm-vO-gpk" secondAttribute="bottom" constant="40" id="odZ-56-vw7"/>
+                            <constraint firstItem="25V-Oz-5Xu" firstAttribute="trailing" secondItem="NV7-HW-8u6" secondAttribute="trailing" constant="16" id="pYp-eP-IZE"/>
                             <constraint firstItem="25V-Oz-5Xu" firstAttribute="trailing" secondItem="q0R-Ce-Hdq" secondAttribute="trailing" constant="24" id="rEr-Nf-KZl"/>
                             <constraint firstItem="2wU-0o-x3S" firstAttribute="leading" secondItem="A0J-Gb-LHA" secondAttribute="trailing" constant="4" id="upf-L1-Mth"/>
                         </constraints>
@@ -682,6 +693,7 @@
                     </view>
                     <connections>
                         <outlet property="containerView" destination="q0R-Ce-Hdq" id="Zta-bn-uLP"/>
+                        <outlet property="doneButton" destination="NV7-HW-8u6" id="Se4-0l-730"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pgy-dJ-kna" userLabel="First Responder" sceneMemberID="firstResponder"/>
