@@ -13,7 +13,7 @@
 import UIKit
 
 protocol PayWalletBusinessLogic {
-    func doSomething(request: PayWallet.Something.Request)
+    func fetchInfo(request: PayWallet.Info.Request)
 }
 
 protocol PayWalletDataStore {
@@ -25,13 +25,21 @@ class PayWalletInteractor: PayWalletBusinessLogic, PayWalletDataStore {
     var worker: PayWalletWorker?
     //var name: String = ""
     
-    // MARK: Do something
+    // MARK: Do Info
     
-    func doSomething(request: PayWallet.Something.Request) {
-        worker = PayWalletWorker()
-        worker?.doSomeWork()
-        
-        let response = PayWallet.Something.Response()
-        presenter?.presentSomething(response: response)
+    func fetchInfo(request: PayWallet.Info.Request) {
+        let info = getWalletInfo()
+        let response = PayWallet.Info.Response(title: "Freecharge Wallet",
+                                               walletInfo: info)
+        presenter?.presentInfo(response: response)
+    }
+    
+    private func getWalletInfo() -> [PayWallet.Info.Response.WalletResponse] {
+        var temp: [PayWallet.Info.Response.WalletResponse] = []
+        temp += [PayWallet.Info.Response.WalletResponse(title: "Amount to be paid",
+                                                        amount: 390)]
+        temp += [PayWallet.Info.Response.WalletResponse(title: "Wallet Balance",
+                                                        amount: 39)]
+        return temp
     }
 }

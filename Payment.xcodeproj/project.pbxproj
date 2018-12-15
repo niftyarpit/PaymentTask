@@ -62,6 +62,7 @@
 		CE611C2F21C0E74800E46A55 /* PayWalletModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE611C2921C0E74800E46A55 /* PayWalletModels.swift */; };
 		CE611C3021C0E74800E46A55 /* PayWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE611C2A21C0E74800E46A55 /* PayWalletViewController.swift */; };
 		CE611C3121C0E74800E46A55 /* PayWalletInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE611C2B21C0E74800E46A55 /* PayWalletInteractor.swift */; };
+		DE22153121C4B9B200C634F2 /* PayWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22153021C4B9B200C634F2 /* PayWalletTableViewCell.swift */; };
 		DEFD14C721C23A57007F27A2 /* CardPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD14C621C23A57007F27A2 /* CardPaymentTableViewCell.swift */; };
 		DEFD14C921C246D6007F27A2 /* CardPaymentSaveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD14C821C246D6007F27A2 /* CardPaymentSaveTableViewCell.swift */; };
 		DEFD14CB21C251D8007F27A2 /* CardPaymentPayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD14CA21C251D8007F27A2 /* CardPaymentPayTableViewCell.swift */; };
@@ -147,6 +148,7 @@
 		CE611C2921C0E74800E46A55 /* PayWalletModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWalletModels.swift; sourceTree = "<group>"; };
 		CE611C2A21C0E74800E46A55 /* PayWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWalletViewController.swift; sourceTree = "<group>"; };
 		CE611C2B21C0E74800E46A55 /* PayWalletInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWalletInteractor.swift; sourceTree = "<group>"; };
+		DE22153021C4B9B200C634F2 /* PayWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWalletTableViewCell.swift; sourceTree = "<group>"; };
 		DEFD14C621C23A57007F27A2 /* CardPaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentTableViewCell.swift; sourceTree = "<group>"; };
 		DEFD14C821C246D6007F27A2 /* CardPaymentSaveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentSaveTableViewCell.swift; sourceTree = "<group>"; };
 		DEFD14CA21C251D8007F27A2 /* CardPaymentPayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentPayTableViewCell.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 		CE611C2521C0E72E00E46A55 /* PayWallet */ = {
 			isa = PBXGroup;
 			children = (
+				DE22152F21C4B98F00C634F2 /* CustomViews */,
 				CE611C2821C0E74800E46A55 /* PayWalletRouter.swift */,
 				CE611C2A21C0E74800E46A55 /* PayWalletViewController.swift */,
 				CE611C2621C0E74800E46A55 /* PayWalletPresenter.swift */,
@@ -356,6 +359,14 @@
 				CE611C2921C0E74800E46A55 /* PayWalletModels.swift */,
 			);
 			path = PayWallet;
+			sourceTree = "<group>";
+		};
+		DE22152F21C4B98F00C634F2 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				DE22153021C4B9B200C634F2 /* PayWalletTableViewCell.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		DEFD14C321C23669007F27A2 /* CustomViews */ = {
@@ -515,6 +526,7 @@
 				CE611C1721C0E00F00E46A55 /* CardInteractor.swift in Sources */,
 				CE611BF521B9BAB300E46A55 /* NetBankCollectionCell.swift in Sources */,
 				CE611C2421C0E71F00E46A55 /* LinkWalletInteractor.swift in Sources */,
+				DE22153121C4B9B200C634F2 /* PayWalletTableViewCell.swift in Sources */,
 				CE3FDCC921C2727A00D34C36 /* NetBanksModels.swift in Sources */,
 				CE611BEC21B95D0100E46A55 /* WalletTableCell.swift in Sources */,
 				CE611C0621BEBA8C00E46A55 /* UPIWorker.swift in Sources */,

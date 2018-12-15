@@ -61,3 +61,11 @@ enum CardPaymentConstants {
     }
 }
 
+enum PayWalletConstants {
+    enum Values {
+        enum IdentifierNames {
+            static let PayWalletTableViewCell = "PayWalletTableViewCell"
+        }
+    }
+}
+

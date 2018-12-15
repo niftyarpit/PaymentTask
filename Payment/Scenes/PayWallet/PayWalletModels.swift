@@ -15,12 +15,24 @@ import UIKit
 enum PayWallet {
     // MARK: Use cases
     
-    enum Something {
+    enum Info {
         struct Request {
         }
         struct Response {
+            struct WalletResponse {
+                var title: String
+                var amount: Int
+            }
+            var title: String
+            var walletInfo: [WalletResponse]
         }
         struct ViewModel {
+            struct WalletViewModel {
+                var title: String
+                var amount: String
+            }
+            var title: String
+            var walletInfo: [WalletViewModel]
         }
     }
 }

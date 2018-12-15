@@ -13,16 +13,35 @@
 import UIKit
 
 protocol PayWalletPresentationLogic {
-    func presentSomething(response: PayWallet.Something.Response)
+    func presentInfo(response: PayWallet.Info.Response)
 }
 
 class PayWalletPresenter: PayWalletPresentationLogic {
     weak var viewController: PayWalletDisplayLogic?
     
-    // MARK: Do something
+    var currencyFormatter: NumberFormatter {
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.maximumFractionDigits = 1
+        currencyFormatter.locale = Locale(identifier: "en_IN")
+        return currencyFormatter
+    }
     
-    func presentSomething(response: PayWallet.Something.Response) {
-        let viewModel = PayWallet.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+
+    
+    // MARK: Do Info
+    
+    func presentInfo(response: PayWallet.Info.Response) {
+        let infoModel = getWalletInfoViewModel(response: response)
+        let viewModel = PayWallet.Info.ViewModel(title: response.title,
+                                                 walletInfo: infoModel)
+        viewController?.displayInfo(viewModel: viewModel)
+    }
+    
+    private func getWalletInfoViewModel(response: PayWallet.Info.Response) -> [PayWallet.Info.ViewModel.WalletViewModel] {
+        let info = response.walletInfo
+        let walletInfo = info.map { PayWallet.Info.ViewModel.WalletViewModel(title: $0.title, amount: currencyFormatter.string(from: NSNumber(value: $0.amount)) ?? EMPTYSTRING) }
+        return walletInfo
     }
 }

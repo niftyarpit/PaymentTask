@@ -13,12 +13,19 @@
 import UIKit
 
 protocol PayWalletDisplayLogic: class {
-    func displaySomething(viewModel: PayWallet.Something.ViewModel)
+    func displayInfo(viewModel: PayWallet.Info.ViewModel)
 }
 
 class PayWalletViewController: UIViewController, PayWalletDisplayLogic {
     var interactor: PayWalletBusinessLogic?
     var router: (NSObjectProtocol & PayWalletRoutingLogic & PayWalletDataPassing)?
+    var walletInfo: [PayWallet.Info.ViewModel.WalletViewModel] = []
+    
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var paynAddButton: UIButton!
+    @IBOutlet weak var footerView: UIView!
     
     // MARK: Object lifecycle
     
@@ -62,20 +69,38 @@ class PayWalletViewController: UIViewController, PayWalletDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
-        navigationItem.title = "Wallet"
+        fetchInfo()
+//        navigationItem.title = "Wallet"
+        containerView.layer.cornerRadius = 5
+        containerView.dropShadow()
+        paynAddButton.layer.cornerRadius = 5
+        tblView.contentInset = UIEdgeInsets(top: 45, left: 0, bottom: 0, right: 0)
     }
     
-    // MARK: Do something
+    // MARK: Do Info
     
     //@IBOutlet weak var nameTextField: UITextField!
     
-    func doSomething() {
-        let request = PayWallet.Something.Request()
-        interactor?.doSomething(request: request)
+    func fetchInfo() {
+        let request = PayWallet.Info.Request()
+        interactor?.fetchInfo(request: request)
     }
     
-    func displaySomething(viewModel: PayWallet.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+    func displayInfo(viewModel: PayWallet.Info.ViewModel) {
+        navigationItem.title = viewModel.title
+        walletInfo = viewModel.walletInfo
+        tblView.reloadData()
+    }
+}
+
+extension PayWalletViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return walletInfo.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PayWalletConstants.Values.IdentifierNames.PayWalletTableViewCell, for: indexPath) as! PayWalletTableViewCell
+        cell.configureCell(with: walletInfo[indexPath.row])
+        return cell
     }
 }
