@@ -63,6 +63,12 @@
 		CE611C3021C0E74800E46A55 /* PayWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE611C2A21C0E74800E46A55 /* PayWalletViewController.swift */; };
 		CE611C3121C0E74800E46A55 /* PayWalletInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE611C2B21C0E74800E46A55 /* PayWalletInteractor.swift */; };
 		DE22153121C4B9B200C634F2 /* PayWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22153021C4B9B200C634F2 /* PayWalletTableViewCell.swift */; };
+		DE25E0E121C647AB001BB6D1 /* WalletAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE25E0DB21C647AB001BB6D1 /* WalletAlertPresenter.swift */; };
+		DE25E0E221C647AB001BB6D1 /* WalletAlertWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE25E0DC21C647AB001BB6D1 /* WalletAlertWorker.swift */; };
+		DE25E0E321C647AB001BB6D1 /* WalletAlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE25E0DD21C647AB001BB6D1 /* WalletAlertRouter.swift */; };
+		DE25E0E421C647AB001BB6D1 /* WalletAlertModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE25E0DE21C647AB001BB6D1 /* WalletAlertModels.swift */; };
+		DE25E0E521C647AB001BB6D1 /* WalletAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE25E0DF21C647AB001BB6D1 /* WalletAlertViewController.swift */; };
+		DE25E0E621C647AB001BB6D1 /* WalletAlertInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE25E0E021C647AB001BB6D1 /* WalletAlertInteractor.swift */; };
 		DEFD14C721C23A57007F27A2 /* CardPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD14C621C23A57007F27A2 /* CardPaymentTableViewCell.swift */; };
 		DEFD14C921C246D6007F27A2 /* CardPaymentSaveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD14C821C246D6007F27A2 /* CardPaymentSaveTableViewCell.swift */; };
 		DEFD14CB21C251D8007F27A2 /* CardPaymentPayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD14CA21C251D8007F27A2 /* CardPaymentPayTableViewCell.swift */; };
@@ -149,6 +155,12 @@
 		CE611C2A21C0E74800E46A55 /* PayWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWalletViewController.swift; sourceTree = "<group>"; };
 		CE611C2B21C0E74800E46A55 /* PayWalletInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWalletInteractor.swift; sourceTree = "<group>"; };
 		DE22153021C4B9B200C634F2 /* PayWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWalletTableViewCell.swift; sourceTree = "<group>"; };
+		DE25E0DB21C647AB001BB6D1 /* WalletAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAlertPresenter.swift; sourceTree = "<group>"; };
+		DE25E0DC21C647AB001BB6D1 /* WalletAlertWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAlertWorker.swift; sourceTree = "<group>"; };
+		DE25E0DD21C647AB001BB6D1 /* WalletAlertRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAlertRouter.swift; sourceTree = "<group>"; };
+		DE25E0DE21C647AB001BB6D1 /* WalletAlertModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAlertModels.swift; sourceTree = "<group>"; };
+		DE25E0DF21C647AB001BB6D1 /* WalletAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAlertViewController.swift; sourceTree = "<group>"; };
+		DE25E0E021C647AB001BB6D1 /* WalletAlertInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAlertInteractor.swift; sourceTree = "<group>"; };
 		DEFD14C621C23A57007F27A2 /* CardPaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentTableViewCell.swift; sourceTree = "<group>"; };
 		DEFD14C821C246D6007F27A2 /* CardPaymentSaveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentSaveTableViewCell.swift; sourceTree = "<group>"; };
 		DEFD14CA21C251D8007F27A2 /* CardPaymentPayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentPayTableViewCell.swift; sourceTree = "<group>"; };
@@ -235,6 +247,7 @@
 		CE108AAB21B5A5C20007E313 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DE25E0DA21C6475A001BB6D1 /* WalletAlert */,
 				CE3FDCBF21C2721E00D34C36 /* NetBanks */,
 				CE3FDCBB21C1203C00D34C36 /* PaymentHome */,
 				CE611C2521C0E72E00E46A55 /* PayWallet */,
@@ -367,6 +380,19 @@
 				DE22153021C4B9B200C634F2 /* PayWalletTableViewCell.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		DE25E0DA21C6475A001BB6D1 /* WalletAlert */ = {
+			isa = PBXGroup;
+			children = (
+				DE25E0DB21C647AB001BB6D1 /* WalletAlertPresenter.swift */,
+				DE25E0DC21C647AB001BB6D1 /* WalletAlertWorker.swift */,
+				DE25E0DD21C647AB001BB6D1 /* WalletAlertRouter.swift */,
+				DE25E0DE21C647AB001BB6D1 /* WalletAlertModels.swift */,
+				DE25E0DF21C647AB001BB6D1 /* WalletAlertViewController.swift */,
+				DE25E0E021C647AB001BB6D1 /* WalletAlertInteractor.swift */,
+			);
+			path = WalletAlert;
 			sourceTree = "<group>";
 		};
 		DEFD14C321C23669007F27A2 /* CustomViews */ = {
@@ -521,6 +547,7 @@
 				CE611C3021C0E74800E46A55 /* PayWalletViewController.swift in Sources */,
 				CE108A8021B5A5190007E313 /* ViewController.swift in Sources */,
 				CE611C2321C0E71F00E46A55 /* LinkWalletViewController.swift in Sources */,
+				DE25E0E521C647AB001BB6D1 /* WalletAlertViewController.swift in Sources */,
 				CE611C0A21BEBA8C00E46A55 /* UPIInteractor.swift in Sources */,
 				CE611C1421C0E00F00E46A55 /* CardRouter.swift in Sources */,
 				CE611C1721C0E00F00E46A55 /* CardInteractor.swift in Sources */,
@@ -535,6 +562,7 @@
 				CE611C1621C0E00F00E46A55 /* CardViewController.swift in Sources */,
 				CE108AB221B5A6020007E313 /* PaymentHomePresenter.swift in Sources */,
 				CE611BEE21B9613A00E46A55 /* SavedCardTableCell.swift in Sources */,
+				DE25E0E221C647AB001BB6D1 /* WalletAlertWorker.swift in Sources */,
 				CE611C1521C0E00F00E46A55 /* CardModels.swift in Sources */,
 				CE3FDCC621C2727A00D34C36 /* NetBanksPresenter.swift in Sources */,
 				CE611BFB21BDA27100E46A55 /* FooterTableCell.swift in Sources */,
@@ -552,15 +580,19 @@
 				CE611C0721BEBA8C00E46A55 /* UPIRouter.swift in Sources */,
 				CE611C1221C0E00F00E46A55 /* CardPresenter.swift in Sources */,
 				CE3FDCC721C2727A00D34C36 /* NetBanksWorker.swift in Sources */,
+				DE25E0E421C647AB001BB6D1 /* WalletAlertModels.swift in Sources */,
 				CE611C1F21C0E71F00E46A55 /* LinkWalletPresenter.swift in Sources */,
 				CE611C0821BEBA8C00E46A55 /* UPIModels.swift in Sources */,
 				CE611BF121B967C400E46A55 /* ViewHelper.swift in Sources */,
 				CE611C2F21C0E74800E46A55 /* PayWalletModels.swift in Sources */,
+				DE25E0E321C647AB001BB6D1 /* WalletAlertRouter.swift in Sources */,
 				CE611C1321C0E00F00E46A55 /* CardWorker.swift in Sources */,
 				CE611C3121C0E74800E46A55 /* PayWalletInteractor.swift in Sources */,
 				CE108AB421B5A6020007E313 /* PaymentHomeRouter.swift in Sources */,
 				CE611BFD21BDA3E700E46A55 /* UPITableCell.swift in Sources */,
 				CE108AB521B5A6020007E313 /* PaymentHomeModels.swift in Sources */,
+				DE25E0E621C647AB001BB6D1 /* WalletAlertInteractor.swift in Sources */,
+				DE25E0E121C647AB001BB6D1 /* WalletAlertPresenter.swift in Sources */,
 				DEFD14CB21C251D8007F27A2 /* CardPaymentPayTableViewCell.swift in Sources */,
 				CE108A7E21B5A5190007E313 /* AppDelegate.swift in Sources */,
 				CE611C2D21C0E74800E46A55 /* PayWalletWorker.swift in Sources */,
