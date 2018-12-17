@@ -30,6 +30,7 @@ enum PaymentHomeConstants {
         static let netbanking = "netbanking"
         static let upi = "upi"
         static let enabled = "enabled"
+        static let linked = "linked"
         static let pg = "pg"
         static let saved = "saved"
         static let number = "number"

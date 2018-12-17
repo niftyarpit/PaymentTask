@@ -10,8 +10,6 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 protocol WalletAlertBusinessLogic {
     func doSomething(request: WalletAlert.Something.Request)
     func confirm(request: WalletAlert.Something.Request)

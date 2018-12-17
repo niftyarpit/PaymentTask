@@ -385,12 +385,12 @@
 		DE25E0DA21C6475A001BB6D1 /* WalletAlert */ = {
 			isa = PBXGroup;
 			children = (
-				DE25E0DB21C647AB001BB6D1 /* WalletAlertPresenter.swift */,
-				DE25E0DC21C647AB001BB6D1 /* WalletAlertWorker.swift */,
 				DE25E0DD21C647AB001BB6D1 /* WalletAlertRouter.swift */,
-				DE25E0DE21C647AB001BB6D1 /* WalletAlertModels.swift */,
 				DE25E0DF21C647AB001BB6D1 /* WalletAlertViewController.swift */,
+				DE25E0DB21C647AB001BB6D1 /* WalletAlertPresenter.swift */,
 				DE25E0E021C647AB001BB6D1 /* WalletAlertInteractor.swift */,
+				DE25E0DC21C647AB001BB6D1 /* WalletAlertWorker.swift */,
+				DE25E0DE21C647AB001BB6D1 /* WalletAlertModels.swift */,
 			);
 			path = WalletAlert;
 			sourceTree = "<group>";

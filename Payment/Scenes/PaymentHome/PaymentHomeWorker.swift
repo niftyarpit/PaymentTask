@@ -131,12 +131,14 @@ class PaymentHomeWorker {
                 let pg = item[PaymentHomeConstants.Keys.pg] as? String ?? EMPTYSTRING
                 let linking_enabled = item[PaymentHomeConstants.Keys.Wallet.linking_enabled] as? Bool ?? false
                 let enabled = item[PaymentHomeConstants.Keys.enabled] as? Bool ?? false
+                let linked = item[PaymentHomeConstants.Keys.linked] as? Bool ?? false
                 let lWallet = ResponseNode.Wallet(name: name,
                                                   code: code,
                                                   logo: logo,
                                                   pg: pg,
                                                   linking_enabled: linking_enabled,
-                                                  enabled: enabled)
+                                                  enabled: enabled,
+                                                  linked: linked)
                 wallets += [lWallet]
             }
         }

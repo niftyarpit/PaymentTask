@@ -10,8 +10,6 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 protocol PaymentHomeBusinessLogic {
     func fetchPaymentOptions(request: PaymentHome.PaymentOptions.Request)
 }
@@ -71,8 +69,7 @@ class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
         var cardNode: PaymentHome.PaymentOptions.Response.CardResponse?
         var upiNode: PaymentHome.PaymentOptions.Response.UPIResponse?
         var wallets: [PaymentHome.PaymentOptions.Response.WalletResponse] = []
-        if let netbanking = responseNode.netbanking {
-            let enabled = netbanking.enabled
+        if let netbanking = responseNode.netbanking, true == netbanking.enabled {
             let pg = netbanking.pg
             var preferredBanks: [PaymentHome.PaymentOptions.Response.NetbankingResponse.PreferredResponse] = []
             for bank in netbanking.preferred {
@@ -86,13 +83,12 @@ class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
                                                                                                             name: name)]
             }
             let all = netbanking.all
-            netbankingNode = PaymentHome.PaymentOptions.Response.NetbankingResponse(enabled: enabled,
+            netbankingNode = PaymentHome.PaymentOptions.Response.NetbankingResponse(enabled: true,
                                                                                     pg: pg,
                                                                                     preferred: preferredBanks,
                                                                                     all: all)
         }
-        if let card = responseNode.card {
-            let enabled = card.enabled
+        if let card = responseNode.card, true == card.enabled {
             let pg = card.pg
             var cards: [PaymentHome.PaymentOptions.Response.CardResponse.SavedCardResponse] = []
             for (index, lCard) in card.cards.enumerated() {
@@ -103,14 +99,13 @@ class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
                                                                                              number: number,
                                                                                              isExpanded: isExpanded)]
             }
-            cardNode = PaymentHome.PaymentOptions.Response.CardResponse(enabled: enabled,
+            cardNode = PaymentHome.PaymentOptions.Response.CardResponse(enabled: true,
                                                                         pg: pg,
                                                                         cards: cards)
         }
-        if let upi = responseNode.upi {
-            let enabled = upi.enabled
+        if let upi = responseNode.upi, true == upi.enabled {
             let pg = upi.pg
-            upiNode = PaymentHome.PaymentOptions.Response.UPIResponse(enabled: enabled,
+            upiNode = PaymentHome.PaymentOptions.Response.UPIResponse(enabled: true,
                                                                       pg: pg)
         }
         for item in responseNode.wallet {
@@ -120,12 +115,20 @@ class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
             let pg = item.pg
             let linkingEnabled = item.linking_enabled
             let enabled = item.enabled
-            wallets += [PaymentHome.PaymentOptions.Response.WalletResponse(name: name,
-                                                                           code: code,
-                                                                           logo: logo,
-                                                                           pg: pg,
-                                                                           linkingEnabled: linkingEnabled,
-                                                                           enabled: enabled)]
+            let linked = item.linked
+            if enabled {
+                if linkingEnabled {
+                    wallets += [PaymentHome.PaymentOptions.Response.WalletResponse(name: name,
+                                                                                   code: code,
+                                                                                   logo: logo,
+                                                                                   pg: pg,
+                                                                                   linkingEnabled: linkingEnabled,
+                                                                                   enabled: enabled,
+                                                                                   linked: linked)]
+                } else {
+                    // other wallets
+                }
+            }
         }
         let response = PaymentHome.PaymentOptions.Response(alertInfo: alertInfo,
                                                            alertError: alertError,

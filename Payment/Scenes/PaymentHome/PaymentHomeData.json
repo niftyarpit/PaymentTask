@@ -125,7 +125,8 @@
                 "logo":"",
                 "pg": "PG5",
                 "linking_enabled":true,
-                "enabled":true
+                "enabled":true,
+                "linked":true
             },
             {
                 "name": "Amazon Pay",
@@ -133,7 +134,8 @@
                 "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-16.png",
                 "pg": "PG2",
                 "linking_enabled":true,
-                "enabled":true
+                "enabled":true,
+                "linked":false
             },
             {
                 "name": "Mobikwik",
@@ -141,7 +143,8 @@
                 "logo":"",
                 "pg": "PG1",
                 "linking_enabled":false,
-                "enabled":false
+                "enabled":false,
+                "linked":true
             },
             {
                 "name": "Ola Money",
@@ -149,7 +152,8 @@
                 "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-05.png",
                 "pg": "PG1",
                 "linking_enabled":false,
-                "enabled":true
+                "enabled":true,
+                "linked":true
             },
             {
                 "name": "Freecharge",
@@ -157,7 +161,8 @@
                 "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-06.png",
                 "pg": "PG1",
                 "linking_enabled":false,
-                "enabled":true
+                "enabled":true,
+                "linked":true
             },
             {
                 "name": "PayZapp",
@@ -165,7 +170,8 @@
                 "logo":"",
                 "pg": "PG1",
                 "linking_enabled":false,
-                "enabled":false
+                "enabled":false,
+                "linked":true
             },
             {
                 "name": "mPesa",

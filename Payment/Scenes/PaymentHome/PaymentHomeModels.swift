@@ -65,6 +65,7 @@ enum PaymentHome {
                 var pg: String
                 var linkingEnabled: Bool
                 var enabled: Bool
+                var linked: Bool
             }
             struct UPIResponse {
                 var enabled: Bool
@@ -173,12 +174,13 @@ struct ResponseNode {
         var cards: [SavedCard]
     }
     struct Wallet {
-     var name: String
-     var code: String
-     var logo: String
-     var pg: String
-     var linking_enabled: Bool
-     var enabled: Bool
+        var name: String
+        var code: String
+        var logo: String
+        var pg: String
+        var linking_enabled: Bool
+        var enabled: Bool
+        var linked: Bool
     }
     struct UPI {
         var enabled: Bool

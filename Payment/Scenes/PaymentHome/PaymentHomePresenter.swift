@@ -62,7 +62,7 @@ class PaymentHomePresenter: PaymentHomePresentationLogic {
                                                                                                imageUrl: wallet.logo,
                                                                                                code: wallet.code,
                                                                                                name: wallet.name,
-                                                                                               isLinked: wallet.linkingEnabled)]
+                                                                                               isLinked: wallet.linked)]
             }
             summary += [PaymentHome.PaymentOptions.ViewModel.WalletSectionViewModel(identifier: SectionType.wallet.rawValue,
                                                                                     info: info)]
