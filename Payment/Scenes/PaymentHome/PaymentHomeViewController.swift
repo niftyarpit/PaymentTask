@@ -156,7 +156,7 @@ extension PaymentHomeViewController: UITableViewDataSource {
                 lCell.linkButtonClickHandler = {[weak self] code in
                     guard let strongSelf = self else { return }
                     print(code)
-                    strongSelf.router?.routeToLinkWallet()
+                    strongSelf.router?.routeToWalletAlert()
                 }
                 cell = lCell
             default:

@@ -14,6 +14,7 @@ import UIKit
 
 @objc protocol PaymentHomeRoutingLogic {
     func routeToUPI()
+    func routeToWalletAlert()
     func routeToLinkWallet()
     func routeToPayWallet()
     func routeToMoreBanks()
@@ -37,6 +38,19 @@ class PaymentHomeRouter: NSObject, PaymentHomeRoutingLogic, PaymentHomeDataPassi
                                                  animated: true)
     }
 
+    func routeToWalletAlert() {
+        let sb = UIStoryboard(name: "Payment",
+                              bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "WalletAlertViewController") as! WalletAlertViewController
+        
+        vc.confirmHandler = { [weak self] in
+            guard let strongSelf = self else { return }
+            vc.dismiss(animated: true, completion: nil)
+            strongSelf.routeToLinkWallet()
+        }
+        viewController!.present(vc, animated: true, completion: nil)
+    }
+    
     func routeToLinkWallet() {
         let sb = UIStoryboard(name: "Payment",
                               bundle: nil)
