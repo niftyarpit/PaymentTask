@@ -32,7 +32,8 @@ enum PaymentHome {
     
     enum PaymentOptions {
         struct Request {
-            var selectedCardIndex: Int = -1
+            var isNetworkFetch = true
+            var selectedCardIndex = -1
         }
         struct Response {
             struct NetbankingResponse {

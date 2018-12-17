@@ -23,26 +23,36 @@ protocol PaymentHomeDataStore {
 class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
     var presenter: PaymentHomePresentationLogic?
     lazy var worker = PaymentHomeWorker()
+    var totalResponseNode: ResponseNode!
     var banksInfo: [String: Any] = [:]
     private var expandedCardIndexes: [Int] = []
     
     func fetchPaymentOptions(request: PaymentHome.PaymentOptions.Request) {
-        populateExpandedCardIndexes(using: request.selectedCardIndex)
-        worker.fetchPaymentOptionsData {[weak self] (result: FetchDataResult) in
-            guard let strongSelf = self else { return }
-            switch result {
-            case .success(let fetchedData):
-                let responseNode = fetchedData["responseNode"] as! ResponseNode
-                let response = strongSelf.getResponse(from: responseNode)
-                strongSelf.banksInfo = response.netbanking?.all ?? [:]
-                strongSelf.presenter?.presentPaymentOptions(response: response)
-            case .failure(let error):
-                switch error {
-                case .cannotFetch(let errorMessage):
-                    break
+        if request.isNetworkFetch {
+            worker.fetchPaymentOptionsData {[weak self] (result: FetchDataResult) in
+                guard let strongSelf = self else { return }
+                switch result {
+                case .success(let fetchedData):
+                    let responseNode = fetchedData["responseNode"] as! ResponseNode
+                    strongSelf.totalResponseNode = responseNode
+                    strongSelf.constructAndPresentResponse(from: responseNode)
+                case .failure(let error):
+                    switch error {
+                    case .cannotFetch(let errorMessage):
+                        break
+                    }
                 }
             }
+        } else {
+            populateExpandedCardIndexes(using: request.selectedCardIndex)
+            constructAndPresentResponse(from: totalResponseNode)
         }
+    }
+    
+    private func constructAndPresentResponse(from responseNode: ResponseNode) {
+        let response = getResponse(from: responseNode)
+        banksInfo = response.netbanking?.all ?? [:]
+        presenter?.presentPaymentOptions(response: response)
     }
     
     private func populateExpandedCardIndexes(using selectedIndex: Int) {

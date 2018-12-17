@@ -22,6 +22,7 @@ class PaymentHomeViewController: UIViewController, PaymentHomeDisplayLogic {
     
     private var summary: [Identifiable] = []
     @IBOutlet weak var tableView: UITableView!
+    
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -49,30 +50,15 @@ class PaymentHomeViewController: UIViewController, PaymentHomeDisplayLogic {
         router.dataStore = interactor
     }
     
-    // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
     // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchPaymentOptions()
-    }
-    
-    // MARK: Do something
-    
-    func fetchPaymentOptions() {
         let request = PaymentHome.PaymentOptions.Request()
         interactor?.fetchPaymentOptions(request: request)
     }
+    
+    // MARK: Do something
     
     func displayPaymentOptions(viewModel: PaymentHome.PaymentOptions.ViewModel) {
         summary = viewModel.summary
@@ -266,7 +252,8 @@ extension PaymentHomeViewController: UITableViewDelegate {
                 router?.routeToCard()
             case PaymentHomeConstants.Values.IdentifierNames.SavedCardTableCell:
                 let cardModel = info as! PaymentHome.PaymentOptions.ViewModel.CardsViewModel.CardViewModel
-                let request = PaymentHome.PaymentOptions.Request(selectedCardIndex: cardModel.index)
+                let request = PaymentHome.PaymentOptions.Request(isNetworkFetch: false,
+                                                                 selectedCardIndex: cardModel.index)
                 interactor?.fetchPaymentOptions(request: request)
             default:
                 break
