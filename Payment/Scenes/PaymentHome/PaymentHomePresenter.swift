@@ -67,6 +67,22 @@ class PaymentHomePresenter: PaymentHomePresentationLogic {
             summary += [PaymentHome.PaymentOptions.ViewModel.WalletSectionViewModel(identifier: SectionType.wallet.rawValue,
                                                                                     info: info)]
         }
+        if response.otherWallet.count > 0 {
+            var info: [Identifiable] = []
+            let header = PaymentHome.PaymentOptions.ViewModel.HeaderViewModel(identifier: PaymentHomeConstants.Values.IdentifierNames.HeaderTableCell,
+                                                                              text: "Other Wallets")
+            info += [header]
+            var otherWallets: [PaymentHome.PaymentOptions.ViewModel.OtherWalletsViewModel.OtherWalletViewModel] = []
+            for otherWallet in response.otherWallet {
+                otherWallets += [PaymentHome.PaymentOptions.ViewModel.OtherWalletsViewModel.OtherWalletViewModel(imageUrl: otherWallet.logo,
+                                                                                                                 code: otherWallet.code,
+                                                                                                                 name: otherWallet.name)]
+            }
+            info += [PaymentHome.PaymentOptions.ViewModel.OtherWalletsViewModel.init(identifier: PaymentHomeConstants.Values.IdentifierNames.OtherWalletsTableCell,
+                                                                                     otherWallets: otherWallets)]
+            summary += [PaymentHome.PaymentOptions.ViewModel.OtherWalletSectionViewModel(identifier: SectionType.otherwallet.rawValue,
+                                                                                         info: info)]
+        }
         if let netbanking = response.netbanking {
             var info: [Identifiable] = []
             if netbanking.preferred.count > 0 {

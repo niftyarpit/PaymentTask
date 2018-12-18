@@ -20,6 +20,8 @@ enum PaymentHomeConstants {
             static let WalletTableCell = "WalletTableCell"
             static let NetBanksTableCell = "NetBanksTableCell"
             static let NetBankCollectionCell = "NetBankCollectionCell"
+            static let OtherWalletsTableCell = "OtherWalletsTableCell"
+            static let OtherWalletCollectionCell = "OtherWalletCollectionCell"
         }
     }
     enum Keys {

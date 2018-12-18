@@ -85,6 +85,9 @@ extension PaymentHomeViewController: UITableViewDataSource {
         case SectionType.netbank.rawValue:
             let model = summary[section] as! PaymentHome.PaymentOptions.ViewModel.NetbankSectionViewModel
             rows = model.info.count
+        case SectionType.otherwallet.rawValue:
+            let model = summary[section] as! PaymentHome.PaymentOptions.ViewModel.OtherWalletSectionViewModel
+            rows = model.info.count
         default:
             break
         }
@@ -158,6 +161,35 @@ extension PaymentHomeViewController: UITableViewDataSource {
                     print(code)
                     strongSelf.router?.routeToWalletAlert()
                 }
+                cell = lCell
+            default:
+                break
+            }
+        case SectionType.otherwallet.rawValue:
+            let model = summary[indexPath.section] as! PaymentHome.PaymentOptions.ViewModel.OtherWalletSectionViewModel
+            let info = model.info[indexPath.row]
+            let infoIdentifier = info.identifier
+            switch infoIdentifier {
+            case PaymentHomeConstants.Values.IdentifierNames.HeaderTableCell:
+                let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,
+                                                          for: indexPath) as! HeaderTableCell
+                let headerModel = info as! PaymentHome.PaymentOptions.ViewModel.HeaderViewModel
+                lCell.configureCellWithModel(headerModel)
+                cell = lCell
+            case PaymentHomeConstants.Values.IdentifierNames.OtherWalletsTableCell:
+                let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,
+                                                          for: indexPath) as! OtherWalletsTableCell
+                let otherWalletsModel = info as! PaymentHome.PaymentOptions.ViewModel.OtherWalletsViewModel
+                lCell.configureCellWithModel(otherWalletsModel.otherWallets)
+                lCell.otherWalletClickHandler = {[weak self] code in
+                    print(code)
+                }
+                cell = lCell
+            case PaymentHomeConstants.Values.IdentifierNames.FooterTableCell:
+                let lCell = tableView.dequeueReusableCell(withIdentifier: infoIdentifier,
+                                                          for: indexPath) as! FooterTableCell
+                let footerModel = info as! PaymentHome.PaymentOptions.ViewModel.FooterViewModel
+                lCell.configureCellWithModel(footerModel)
                 cell = lCell
             default:
                 break

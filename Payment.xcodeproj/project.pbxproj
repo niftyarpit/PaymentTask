@@ -27,6 +27,8 @@
 		CE3FDCCA21C2727A00D34C36 /* NetBanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FDCC421C2727A00D34C36 /* NetBanksViewController.swift */; };
 		CE3FDCCB21C2727A00D34C36 /* NetBanksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FDCC521C2727A00D34C36 /* NetBanksInteractor.swift */; };
 		CE5343D721C39738001D7517 /* NetBankTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343D621C39737001D7517 /* NetBankTableCell.swift */; };
+		CE5343D921C7CC02001D7517 /* OtherWalletsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343D821C7CC02001D7517 /* OtherWalletsTableCell.swift */; };
+		CE5343DB21C7CC76001D7517 /* OtherWalletCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343DA21C7CC76001D7517 /* OtherWalletCollectionCell.swift */; };
 		CE611BE421B783A600E46A55 /* PaymentHomeData.json in Resources */ = {isa = PBXBuildFile; fileRef = CE611BE321B783A600E46A55 /* PaymentHomeData.json */; };
 		CE611BE621B784C000E46A55 /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE611BE521B784C000E46A55 /* Payment.storyboard */; };
 		CE611BEC21B95D0100E46A55 /* WalletTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE611BEB21B95D0100E46A55 /* WalletTableCell.swift */; };
@@ -119,6 +121,8 @@
 		CE3FDCC421C2727A00D34C36 /* NetBanksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBanksViewController.swift; sourceTree = "<group>"; };
 		CE3FDCC521C2727A00D34C36 /* NetBanksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBanksInteractor.swift; sourceTree = "<group>"; };
 		CE5343D621C39737001D7517 /* NetBankTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBankTableCell.swift; sourceTree = "<group>"; };
+		CE5343D821C7CC02001D7517 /* OtherWalletsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherWalletsTableCell.swift; sourceTree = "<group>"; };
+		CE5343DA21C7CC76001D7517 /* OtherWalletCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherWalletCollectionCell.swift; sourceTree = "<group>"; };
 		CE611BE321B783A600E46A55 /* PaymentHomeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PaymentHomeData.json; sourceTree = "<group>"; };
 		CE611BE521B784C000E46A55 /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		CE611BEB21B95D0100E46A55 /* WalletTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableCell.swift; sourceTree = "<group>"; };
@@ -307,6 +311,8 @@
 				CE611BF821BDA25700E46A55 /* HeaderTableCell.swift */,
 				CE611BFA21BDA27100E46A55 /* FooterTableCell.swift */,
 				CE611BFC21BDA3E700E46A55 /* UPITableCell.swift */,
+				CE5343D821C7CC02001D7517 /* OtherWalletsTableCell.swift */,
+				CE5343DA21C7CC76001D7517 /* OtherWalletCollectionCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -542,11 +548,13 @@
 				CE5343D721C39738001D7517 /* NetBankTableCell.swift in Sources */,
 				CE108AB721B5A6020007E313 /* PaymentHomeInteractor.swift in Sources */,
 				CE3FDCCB21C2727A00D34C36 /* NetBanksInteractor.swift in Sources */,
+				CE5343DB21C7CC76001D7517 /* OtherWalletCollectionCell.swift in Sources */,
 				CE611BF721BA77D100E46A55 /* ConstantsHelper.swift in Sources */,
 				DEFD14C921C246D6007F27A2 /* CardPaymentSaveTableViewCell.swift in Sources */,
 				CE611C3021C0E74800E46A55 /* PayWalletViewController.swift in Sources */,
 				CE108A8021B5A5190007E313 /* ViewController.swift in Sources */,
 				CE611C2321C0E71F00E46A55 /* LinkWalletViewController.swift in Sources */,
+				CE5343D921C7CC02001D7517 /* OtherWalletsTableCell.swift in Sources */,
 				DE25E0E521C647AB001BB6D1 /* WalletAlertViewController.swift in Sources */,
 				CE611C0A21BEBA8C00E46A55 /* UPIInteractor.swift in Sources */,
 				CE611C1421C0E00F00E46A55 /* CardRouter.swift in Sources */,

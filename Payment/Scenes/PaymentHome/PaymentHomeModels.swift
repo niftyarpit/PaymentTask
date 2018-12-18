@@ -23,6 +23,7 @@ protocol SectionIdentifiable {
 enum SectionType: String {
     case card
     case wallet
+    case otherwallet
     case netbank
     case upi
 }
@@ -43,7 +44,6 @@ enum PaymentHome {
                     var code: String
                     var name: String
                 }
-                var enabled: Bool
                 var pg: String
                 var preferred: [PreferredResponse]
                 var all: [String: Any]
@@ -54,7 +54,6 @@ enum PaymentHome {
                     var number: String
                     var isExpanded: Bool
                 }
-                var enabled: Bool
                 var pg: String
                 var cards: [SavedCardResponse]
             }
@@ -63,12 +62,15 @@ enum PaymentHome {
                 var code: String
                 var logo: String
                 var pg: String
-                var linkingEnabled: Bool
-                var enabled: Bool
                 var linked: Bool
             }
+            struct OtherWalletResponse {
+                var name: String
+                var code: String
+                var logo: String
+                var pg: String
+            }
             struct UPIResponse {
-                var enabled: Bool
                 var pg: String
             }
             var alertInfo: String
@@ -76,6 +78,7 @@ enum PaymentHome {
             var card: CardResponse?
             var netbanking: NetbankingResponse?
             var wallet: [WalletResponse]
+            var otherWallet: [OtherWalletResponse]
             var upi: UPIResponse?
         }
         struct ViewModel {
@@ -108,13 +111,13 @@ enum PaymentHome {
                 var wallets: [WalletViewModel]
             }
             struct OtherWalletsViewModel: Identifiable {
-                struct WalletViewModel {
+                struct OtherWalletViewModel {
                     var imageUrl: String
                     var code: String
                     var name: String
                 }
                 var identifier: String
-                var wallets: [WalletViewModel]
+                var otherWallets: [OtherWalletViewModel]
             }
             struct UPIViewModel: Identifiable {
                 var identifier: String
@@ -135,6 +138,10 @@ enum PaymentHome {
                 var info: [Identifiable]
             }
             struct WalletSectionViewModel: Identifiable {
+                var identifier: String
+                var info: [Identifiable]
+            }
+            struct OtherWalletSectionViewModel: Identifiable {
                 var identifier: String
                 var info: [Identifiable]
             }

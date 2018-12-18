@@ -69,6 +69,7 @@ class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
         var cardNode: PaymentHome.PaymentOptions.Response.CardResponse?
         var upiNode: PaymentHome.PaymentOptions.Response.UPIResponse?
         var wallets: [PaymentHome.PaymentOptions.Response.WalletResponse] = []
+        var otherWallets: [PaymentHome.PaymentOptions.Response.OtherWalletResponse] = []
         if let netbanking = responseNode.netbanking, true == netbanking.enabled {
             let pg = netbanking.pg
             var preferredBanks: [PaymentHome.PaymentOptions.Response.NetbankingResponse.PreferredResponse] = []
@@ -83,8 +84,7 @@ class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
                                                                                                             name: name)]
             }
             let all = netbanking.all
-            netbankingNode = PaymentHome.PaymentOptions.Response.NetbankingResponse(enabled: true,
-                                                                                    pg: pg,
+            netbankingNode = PaymentHome.PaymentOptions.Response.NetbankingResponse(pg: pg,
                                                                                     preferred: preferredBanks,
                                                                                     all: all)
         }
@@ -99,14 +99,12 @@ class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
                                                                                              number: number,
                                                                                              isExpanded: isExpanded)]
             }
-            cardNode = PaymentHome.PaymentOptions.Response.CardResponse(enabled: true,
-                                                                        pg: pg,
+            cardNode = PaymentHome.PaymentOptions.Response.CardResponse(pg: pg,
                                                                         cards: cards)
         }
         if let upi = responseNode.upi, true == upi.enabled {
             let pg = upi.pg
-            upiNode = PaymentHome.PaymentOptions.Response.UPIResponse(enabled: true,
-                                                                      pg: pg)
+            upiNode = PaymentHome.PaymentOptions.Response.UPIResponse(pg: pg)
         }
         for item in responseNode.wallet {
             let name = item.name
@@ -122,11 +120,12 @@ class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
                                                                                    code: code,
                                                                                    logo: logo,
                                                                                    pg: pg,
-                                                                                   linkingEnabled: linkingEnabled,
-                                                                                   enabled: enabled,
                                                                                    linked: linked)]
                 } else {
-                    // other wallets
+                    otherWallets += [PaymentHome.PaymentOptions.Response.OtherWalletResponse(name: name,
+                                                                                             code: code,
+                                                                                             logo: logo,
+                                                                                             pg: pg)]
                 }
             }
         }
@@ -135,6 +134,7 @@ class PaymentHomeInteractor: PaymentHomeBusinessLogic, PaymentHomeDataStore {
                                                            card: cardNode,
                                                            netbanking: netbankingNode,
                                                            wallet: wallets,
+                                                           otherWallet: otherWallets,
                                                            upi: upiNode)
         return response
     }
