@@ -16,8 +16,8 @@ class SavedCardTableCell: UITableViewCell {
     @IBOutlet weak var cvvTextField: UITextField!
     @IBOutlet weak var containerView: UIView!
     
-    var payButtonClickHandler: (Int) -> Void = {
-        _ in
+    var payButtonClickHandler: (Int, String) -> Void = {
+        _, _ in
     }
 
     override func awakeFromNib() {
@@ -34,7 +34,8 @@ class SavedCardTableCell: UITableViewCell {
     }
     
     @IBAction func payButtonClicked(_ sender: UIButton) {
-        payButtonClickHandler(sender.tag)
+        guard let text = cvvTextField.text else { return }
+        payButtonClickHandler(sender.tag, text)
     }
 }
 
@@ -43,6 +44,12 @@ extension SavedCardTableCell: UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let count = text.count + string.count - range.length
+        return count <= 4
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }
 }

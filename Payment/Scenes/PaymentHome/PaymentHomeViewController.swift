@@ -126,9 +126,25 @@ extension PaymentHomeViewController: UITableViewDataSource {
                                                           for: indexPath) as! SavedCardTableCell
                 let cardModel = info as! PaymentHome.PaymentOptions.ViewModel.CardsViewModel.CardViewModel
                 lCell.configureCellWithModel(cardModel)
-                lCell.payButtonClickHandler = {[weak self] index in
+                lCell.payButtonClickHandler = {[weak self] index, cvv in
                     guard let strongSelf = self else { return }
-                    strongSelf.router?.routeToCard()
+                    if 3...4 ~=  cvv.count {
+                        strongSelf.router?.routeToCard()
+                    } else {
+                        let alertController = UIAlertController(title: "Invalid CVV",
+                                                                message: "Enter proper CVV",
+                                                                preferredStyle: UIAlertController.Style.alert)
+                        let action = UIAlertAction(title: "OK",
+                                                   style: UIAlertAction.Style.default) {[weak self] _ in
+                                                    guard let strongSelf = self else { return }
+                                                    alertController.dismiss(animated: true, completion: nil)
+                        }
+                        alertController.addAction(action)
+                        strongSelf.present(alertController,
+                                           animated: true,
+                                           completion: nil)
+                        
+                    }
                 }
                 cell = lCell
             case PaymentHomeConstants.Values.IdentifierNames.FooterTableCell:

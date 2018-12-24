@@ -13,6 +13,22 @@
                 },
                 {
                     "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-11.png",
+                    "number":" xxxx - xxxx - xxxx - 9274"
+                },
+                {
+                    "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-11.png",
+                    "number":" xxxx - xxxx - xxxx - 9274"
+                },
+                {
+                    "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-11.png",
+                    "number":" xxxx - xxxx - xxxx - 9274"
+                },
+                {
+                    "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-11.png",
+                    "number":" xxxx - xxxx - xxxx - 9274"
+                },
+               {
+                    "logo":"https://playo.imgix.net/Payment/payment-gateway-icons-11.png",
                     "number":" xxxx - xxxx - xxxx - 0002"
                 }
             ]
@@ -171,6 +187,42 @@
                 "pg": "PG1",
                 "linking_enabled":false,
                 "enabled":false,
+                "linked":true
+            },
+            {
+                "name": "Paytm",
+                "code":"paytm",
+                "logo":"",
+                "pg": "PG5",
+                "linking_enabled":true,
+                "enabled":true,
+                "linked":true
+            },
+            {
+                "name": "Paytm",
+                "code":"paytm",
+                "logo":"",
+                "pg": "PG5",
+                "linking_enabled":true,
+                "enabled":true,
+                "linked":true
+            },
+            {
+                "name": "Paytm",
+                "code":"paytm",
+                "logo":"",
+                "pg": "PG5",
+                "linking_enabled":true,
+                "enabled":true,
+                "linked":true
+            },
+            {
+                "name": "Paytm",
+                "code":"paytm",
+                "logo":"",
+                "pg": "PG5",
+                "linking_enabled":true,
+                "enabled":true,
                 "linked":true
             },
             {
