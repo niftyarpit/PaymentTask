@@ -12,8 +12,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigator()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     @IBAction func buttonClicked(_ sender: UIButton) {
@@ -24,13 +22,5 @@ class ViewController: UIViewController {
                                                  animated: true)
 
     }
-    
-    private func configureNavigator() {
-        guard let navigationController = navigationController else { return }
-        navigationController.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .automatic
-        navigationController.navigationBar.sizeToFit()
-    }
-
 }
 

@@ -54,6 +54,7 @@ class PaymentHomeViewController: UIViewController, PaymentHomeDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Select Preferred Payment"
         let request = PaymentHome.PaymentOptions.Request()
         interactor?.fetchPaymentOptions(request: request)
     }
